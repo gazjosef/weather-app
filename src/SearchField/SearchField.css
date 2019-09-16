@@ -1,0 +1,81 @@
+.searchField {
+  padding: 20px 5px;
+  display: flex;
+  justify-content: space-around;
+  background: #2c3e50;
+}
+
+#search-field input {
+  width: 40px;
+  padding: 5px;
+}
+
+input#city,
+input#country,
+button#get {
+  width: 60px;
+  font-size: 10px;
+  padding: 3px 5px;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px #2c3e50 inset;
+  -webkit-text-fill-color: #fff !important;
+}
+
+input[type="text"]:focus {
+  -webkit-box-shadow: 0 0 0 30px #2c3e50 inset;
+  -webkit-text-fill-color: #fff !important;
+}
+
+button#get {
+  border: 0;
+  margin: 0 8px 0 0;
+  border-radius: 2px;
+  font-weight: lighter;
+  letter-spacing: 1px;
+  cursor: pointer;
+  background-color: #f16051;
+  color: #fff;
+  font-weight: 100;
+}
+
+/* CSS @media Rule */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 1200px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  /* button {
+    padding: 8px 20px;
+  }
+
+  button:active {
+    outline: none;
+  }
+
+  input#city,
+  input#country,
+  button#get {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  #search-field input {
+    width: 140px;
+  } */
+}
