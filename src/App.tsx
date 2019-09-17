@@ -8,9 +8,11 @@ import SearchField from "./SearchField/SearchField";
 import MainInfo from "./MainInfo/MainInfo";
 import CityDate from "./CityDate/CityDate";
 import WeatherIcon from "./WeatherIcon/WeatherIcon";
+import { async } from "q";
 
 // OpenWeather API
 const API_KEY = "4a64ed09d073cdac231c53e1a3b62181";
+const TIMEZONE_KEY = "DKEKJ5WGOS2H";
 
 class App extends React.Component {
   state = {
@@ -25,7 +27,9 @@ class App extends React.Component {
     temp_max: undefined,
     description: undefined,
     error: undefined,
-    fontAwesome: undefined
+    background: "sky-gradient-11",
+    latitude: undefined,
+    longitude: undefined
   };
 
   timeConverter(UNIX_timestamp: number) {
@@ -70,7 +74,7 @@ class App extends React.Component {
       "03n": "cloud-solid",
       "04n": "cloud-solid",
       "09n": "cloud-moon-rain-solid",
-      "10n": "cloud-showers-heavy",
+      "10n": "cloud-showers-heavy-solid",
       "11n": "poo-storm-solid",
       "13n": "snowflake-solid",
       "50n": "smog-solid"
@@ -100,7 +104,10 @@ class App extends React.Component {
         wind: data.wind.speed,
         temp_min: data.main.temp_min,
         temp_max: data.main.temp_max,
-        description: data.weather[0].description
+        description: data.weather[0].description,
+        background: this.backgroundConverter(data.weather[0].icon),
+        latitude: data.coord.lat,
+        longitude: data.coord.lon
       });
     } else {
       this.setState({
@@ -113,14 +120,29 @@ class App extends React.Component {
         wind: undefined,
         temp_min: undefined,
         temp_max: undefined,
-        description: undefined
+        description: undefined,
+        background: undefined,
+        latitude: undefined,
+        longitude: undefined
       });
     }
   };
 
+  getTimeZone = async () => {
+    const lat = this.state.latitude;
+    const long = this.state.longitude;
+
+    const timezone_api_call = await fetch(
+      `http://api.timezonedb.com/v2.1/get-time-zone?key=${TIMEZONE_KEY}&format=xml&by=position&lat=${lat}&lng=${long}`
+    );
+
+    const zone = await timezone_api_call.json();
+    return zone;
+  };
+
   backgroundConverter(icon: string) {
     const weatherBackground: any = {
-      "01d": "sky-gradient-10",
+      "01d": "sky-gradient-11",
       "02d": "sky-gradient-11",
       "03d": "sky-gradient-13",
       "04d": "sky-gradient-14",
@@ -128,28 +150,29 @@ class App extends React.Component {
       "10d": "sky-gradient-15",
       "11d": "sky-gradient-15",
       "13d": "sky-gradient-09",
-      "50d": "sky-gradient-09",
-      "01n": "sky-gradient-04",
+      "50d": "sky-gradient-08",
+      "01n": "sky-gradient-05",
       "02n": "sky-gradient-03",
       "03n": "sky-gradient-03",
       "04n": "sky-gradient-03",
-      "09n": "sky-gradient-03",
+      "09n": "sky-gradient-22",
       "10n": "sky-gradient-03",
       "11n": "sky-gradient-21",
       "13n": "sky-gradient-02",
-      "50n": "sky-gradient-22"
+      "50n": "sky-gradient-20"
     };
     return weatherBackground[icon];
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="wrapper">
         <div className="center">
           {/* iPhone / iPad */}
           <div className="mobile">
             {/* Screen */}
-            <div className="screen sky-gradient-11">
+            <div className={`screen ${this.state.background}`}>
               <SearchField getWeather={this.getWeather} />
               <div className="weather-display">
                 <CityDate

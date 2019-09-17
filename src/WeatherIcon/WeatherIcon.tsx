@@ -11,6 +11,7 @@ const WeatherIcon = (props: any) => {
         <img
           src={require(`../svg/${props.icon}.svg`)}
           alt={props.description}
+          className="filter-white"
         />
       </div>
     );
