@@ -93,7 +93,6 @@ class App extends React.Component {
     const data = await api_call.json();
 
     if (city && country) {
-      console.log(this.state);
       this.setState({
         temperature: data.main.temp,
         city: data.name,
@@ -158,7 +157,7 @@ class App extends React.Component {
       "13d": "sky-gradient-09",
       "50d": "sky-gradient-08",
       "01n": "sky-gradient-05",
-      "02n": "sky-gradient-03",
+      "02n": "sky-gradient-21",
       "03n": "sky-gradient-03",
       "04n": "sky-gradient-03",
       "09n": "sky-gradient-22",
@@ -171,6 +170,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="wrapper">
         <div className="center">
