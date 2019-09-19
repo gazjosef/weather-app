@@ -149,7 +149,7 @@ class App extends React.Component {
   backgroundConverter(icon: string) {
     const weatherBackground: any = {
       "01d": "sky-gradient-11",
-      "02d": "sky-gradient-11",
+      "02d": "sky-gradient-09",
       "03d": "sky-gradient-13",
       "04d": "sky-gradient-14",
       "09d": "sky-gradient-14",
