@@ -28,7 +28,8 @@ class App extends React.Component {
     error: undefined,
     background: "sky-gradient-11",
     latitude: undefined,
-    longitude: undefined
+    longitude: undefined,
+    time: undefined
   };
 
   timeConverter(UNIX_timestamp: number) {
@@ -92,6 +93,7 @@ class App extends React.Component {
     const data = await api_call.json();
 
     if (city && country) {
+      console.log(this.state);
       this.setState({
         temperature: data.main.temp,
         city: data.name,
@@ -110,10 +112,10 @@ class App extends React.Component {
       const zone = await this.getTimeZone();
       console.log(zone);
       console.log(zone.formatted);
-      //use zone to get the time...
-      // this.setState({
-      //   date: this.timeConverter(zone.timestamp)
-      // });
+      // use zone to get the time...
+      this.setState({
+        time: zone.formatted
+      });
     } else {
       this.setState({
         temperature: undefined,
@@ -182,7 +184,8 @@ class App extends React.Component {
                 <CityDate
                   city={this.state.city}
                   country={this.state.country}
-                  date={this.state.date}
+                  // date={this.state.date}
+                  time={this.state.time}
                 />
                 <WeatherIcon
                   icon={this.state.icon}

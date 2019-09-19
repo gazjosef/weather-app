@@ -10,7 +10,7 @@ const CityDate = (props: any) => (
         </p>
       )}
     </div>
-    <div className="date">{props.date && <p>{props.date}</p>}</div>
+    <div className="date">{props.time && <p>{props.time}</p>}</div>
   </div>
 );
 
