@@ -110,7 +110,6 @@ class App extends React.Component {
         longitude: data.coord.lon
       });
       const zone = await this.getTimeZone();
-      console.log(zone);
       console.log(zone.formatted);
       // use zone to get the time...
       this.setState({
