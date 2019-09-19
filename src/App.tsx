@@ -92,7 +92,6 @@ class App extends React.Component {
     const data = await api_call.json();
 
     if (city && country) {
-      console.log(data);
       this.setState({
         temperature: data.main.temp,
         city: data.name,
@@ -110,7 +109,11 @@ class App extends React.Component {
       });
       const zone = await this.getTimeZone();
       console.log(zone);
+      console.log(zone.formatted);
       //use zone to get the time...
+      // this.setState({
+      //   date: this.timeConverter(zone.timestamp)
+      // });
     } else {
       this.setState({
         temperature: undefined,
@@ -134,16 +137,10 @@ class App extends React.Component {
     const lat = this.state.latitude;
     const long = this.state.longitude;
 
-    console.log("latitude", lat);
-    console.log("longitude", long);
-
     const timezone_api_call = await fetch(
       `http://api.timezonedb.com/v2.1/get-time-zone?key=${TIMEZONE_KEY}&format=json&by=position&lat=${lat}&lng=${long}`
     );
-
-    console.log("timezone api call", timezone_api_call);
     const zone = await timezone_api_call.json();
-    console.log("zone", zone);
 
     return zone;
   };
@@ -173,7 +170,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="wrapper">
         <div className="center">
