@@ -139,7 +139,7 @@ class App extends React.Component {
     const long = this.state.longitude;
 
     const timezone_api_call = await fetch(
-      `http://api.timezonedb.com/v2.1/get-time-zone?key=${TIMEZONE_KEY}&format=json&by=position&lat=${lat}&lng=${long}`
+      `https://api.timezonedb.com/v2.1/get-time-zone?key=${TIMEZONE_KEY}&format=json&by=position&lat=${lat}&lng=${long}`
     );
     const zone = await timezone_api_call.json();
 
