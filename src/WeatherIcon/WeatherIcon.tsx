@@ -3,8 +3,6 @@ import "./WeatherIcon.css";
 import "../svg/sun-solid.svg";
 
 const WeatherIcon = (props: any) => {
-  console.log(props);
-
   if (props.icon !== undefined) {
     return (
       <div id="weather-icon">

@@ -8,7 +8,6 @@ import SearchField from "./SearchField/SearchField";
 import MainInfo from "./MainInfo/MainInfo";
 import CityDate from "./CityDate/CityDate";
 import WeatherIcon from "./WeatherIcon/WeatherIcon";
-import { async } from "q";
 
 // OpenWeather API
 const API_KEY = "4a64ed09d073cdac231c53e1a3b62181";
@@ -109,6 +108,9 @@ class App extends React.Component {
         latitude: data.coord.lat,
         longitude: data.coord.lon
       });
+      const zone = await this.getTimeZone();
+      console.log(zone);
+      //use zone to get the time...
     } else {
       this.setState({
         temperature: undefined,
@@ -132,11 +134,17 @@ class App extends React.Component {
     const lat = this.state.latitude;
     const long = this.state.longitude;
 
+    console.log("latitude", lat);
+    console.log("longitude", long);
+
     const timezone_api_call = await fetch(
-      `http://api.timezonedb.com/v2.1/get-time-zone?key=${TIMEZONE_KEY}&format=xml&by=position&lat=${lat}&lng=${long}`
+      `http://api.timezonedb.com/v2.1/get-time-zone?key=${TIMEZONE_KEY}&format=json&by=position&lat=${lat}&lng=${long}`
     );
 
+    console.log("timezone api call", timezone_api_call);
     const zone = await timezone_api_call.json();
+    console.log("zone", zone);
+
     return zone;
   };
 
