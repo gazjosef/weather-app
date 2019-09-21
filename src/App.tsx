@@ -9,10 +9,6 @@ import MainInfo from "./MainInfo/MainInfo";
 import CityDate from "./CityDate/CityDate";
 import WeatherIcon from "./WeatherIcon/WeatherIcon";
 
-// OpenWeather API
-// const API_KEY = "4a64ed09d073cdac231c53e1a3b62181";
-// const TIMEZONE_KEY = "DKEKJ5WGOS2H";
-
 class App extends React.Component {
   state = {
     temperature: undefined,
@@ -83,8 +79,6 @@ class App extends React.Component {
   }
 
   getWeather = async (e: any) => {
-    console.log(process.env.REACT_APP_OPEN_WEATHER_API_KEY);
-    console.log(process.env.REACT_APP_TIMEZONEDB_API_KEY);
     e.preventDefault();
     const city = e.target.elements.city.value;
     const country = e.target.elements.country.value;
@@ -111,8 +105,6 @@ class App extends React.Component {
         longitude: data.coord.lon
       });
       const zone = await this.getTimeZone();
-      console.log(zone.formatted);
-      // use zone to get the time...
       this.setState({
         time: zone.formatted
       });
@@ -136,8 +128,9 @@ class App extends React.Component {
   };
 
   getTimeZone = async () => {
-    const lat = this.state.latitude;
-    const long = this.state.longitude;
+    const { latitude, longitude } = this.state;
+    const lat = latitude;
+    const long = longitude;
 
     const timezone_api_call = await fetch(
       `https://api.timezonedb.com/v2.1/get-time-zone?key=${process.env.REACT_APP_TIMEZONEDB_API_KEY}&format=json&by=position&lat=${lat}&lng=${long}`
@@ -172,7 +165,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     const {
       background,
       city,
