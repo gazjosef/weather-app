@@ -10,8 +10,8 @@ import CityDate from "./CityDate/CityDate";
 import WeatherIcon from "./WeatherIcon/WeatherIcon";
 
 // OpenWeather API
-const API_KEY = "4a64ed09d073cdac231c53e1a3b62181";
-const TIMEZONE_KEY = "DKEKJ5WGOS2H";
+// const API_KEY = "4a64ed09d073cdac231c53e1a3b62181";
+// const TIMEZONE_KEY = "DKEKJ5WGOS2H";
 
 class App extends React.Component {
   state = {
@@ -83,12 +83,14 @@ class App extends React.Component {
   }
 
   getWeather = async (e: any) => {
+    console.log(process.env.REACT_APP_OPEN_WEATHER_API_KEY);
+    console.log(process.env.REACT_APP_TIMEZONEDB_API_KEY);
     e.preventDefault();
     const city = e.target.elements.city.value;
     const country = e.target.elements.country.value;
 
     const api_call = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}&units=metric`
     );
     const data = await api_call.json();
 
@@ -138,7 +140,7 @@ class App extends React.Component {
     const long = this.state.longitude;
 
     const timezone_api_call = await fetch(
-      `https://api.timezonedb.com/v2.1/get-time-zone?key=${TIMEZONE_KEY}&format=json&by=position&lat=${lat}&lng=${long}`
+      `https://api.timezonedb.com/v2.1/get-time-zone?key=${process.env.REACT_APP_TIMEZONEDB_API_KEY}&format=json&by=position&lat=${lat}&lng=${long}`
     );
     const zone = await timezone_api_call.json();
 
@@ -171,29 +173,33 @@ class App extends React.Component {
 
   render() {
     console.log(this.state);
+    const {
+      background,
+      city,
+      country,
+      // date,
+      description,
+      icon,
+      temperature,
+      time
+    } = this.state;
     return (
       <div className="wrapper">
         <div className="center">
           {/* iPhone / iPad */}
           <div className="mobile">
             {/* Screen */}
-            <div className={`screen ${this.state.background}`}>
+            <div className={`screen ${background}`}>
               <SearchField getWeather={this.getWeather} />
               <div className="weather-display">
                 <CityDate
-                  city={this.state.city}
-                  country={this.state.country}
-                  // date={this.state.date}
-                  time={this.state.time}
+                  city={city}
+                  country={country}
+                  // date={date}
+                  time={time}
                 />
-                <WeatherIcon
-                  icon={this.state.icon}
-                  description={this.state.description}
-                />
-                <MainInfo
-                  temperature={this.state.temperature}
-                  description={this.state.description}
-                />
+                <WeatherIcon icon={icon} description={description} />
+                <MainInfo temperature={temperature} description={description} />
               </div>
             </div>
             {/* Home Button */}

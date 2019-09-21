@@ -1,6 +1,5 @@
 import React from "react";
 import "./WeatherIcon.css";
-import "../svg/sun-solid.svg";
 
 const WeatherIcon = (props: any) => {
   if (props.icon !== undefined) {
