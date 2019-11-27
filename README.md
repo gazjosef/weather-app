@@ -10,6 +10,8 @@ A weather app that provides weather information while changing background depend
 1. Enter City
 2. Enter Country Code
 
+E.g Sydney AU
+
 ## Built with
 
 - Open Weather API
