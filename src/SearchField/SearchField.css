@@ -14,7 +14,7 @@ input#city,
 input#country,
 button#get {
   width: 60px;
-  font-size: 10px;
+  font-size: 9px;
   padding: 3px 5px;
 }
 
