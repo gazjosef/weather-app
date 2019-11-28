@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import "./iPhone.css";
 import "./weather-background.css";
+import "./weather-background.css";
 
 import SearchField from "./SearchField/SearchField";
 // import SecondaryInfo from "./SecondaryInfo/SecondaryInfo";
