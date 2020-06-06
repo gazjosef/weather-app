@@ -4,12 +4,11 @@ import "./iPhone.css";
 import "./weather-background.css";
 
 // LAYOUT
-// import SearchField from "./Component/SearchField/SearchField"
-// import SearchField from "./SearchField/SearchField";
-// import SecondaryInfo from "./SecondaryInfo/SecondaryInfo";
-// import MainInfo from "./MainInfo/MainInfo";
-// import CityDate from "./CityDate/CityDate";
-// import WeatherIcon from "./WeatherIcon/WeatherIcon";
+import SearchField from "./Components/SearchField/SearchField"
+import SecondaryInfo from "./Components/SecondaryInfo/SecondaryInfo";
+import MainInfo from "./Components/MainInfo/MainInfo";
+import CityDate from "./Components/CityDate/CityDate";
+// import WeatherIcon from "./Components/WeatherIcon/WeatherIcon";
 
 class App extends React.Component {
   state = {
@@ -184,7 +183,7 @@ class App extends React.Component {
           <div className="mobile">
             {/* Screen */}
             <div className={`screen ${background}`}>
-            {/* 
+
               <SearchField getWeather={this.getWeather} />
               <div className="weather-display">
                 <CityDate
@@ -193,10 +192,10 @@ class App extends React.Component {
                   // date={date}
                   time={time}
                 />
-                <WeatherIcon icon={icon} description={description} />
+                {/* <WeatherIcon icon={icon} description={description} /> */}
                 <MainInfo temperature={temperature} description={description} />
               </div>
-              */}
+
             </div>
             {/* Home Button */}
             <div className="home"></div>
