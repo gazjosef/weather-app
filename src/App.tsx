@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
 import "./iPhone.css";
 import "./weather-background.css";
@@ -10,7 +10,7 @@ import MainInfo from "./Components/MainInfo/MainInfo";
 import CityDate from "./Components/CityDate/CityDate";
 import WeatherIcon from "./Components/WeatherIcon/WeatherIcon";
 
-class App extends React.Component {
+class App extends Component {
   state = {
     temperature: undefined,
     city: undefined,
