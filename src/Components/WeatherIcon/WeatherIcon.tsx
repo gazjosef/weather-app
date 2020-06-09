@@ -1,5 +1,5 @@
-import React from "react";
-import "./WeatherIcon.css";
+import React from 'react';
+import './WeatherIcon.css';
 
 const WeatherIcon = (props: any) => {
   if (props.icon !== undefined) {
