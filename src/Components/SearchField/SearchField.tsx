@@ -1,5 +1,5 @@
-import React from "react";
-import "./SearchField.css";
+import React from 'react';
+import './SearchField.css';
 
 const SearchField = (props: any) => (
   <form onSubmit={props.getWeather} className="form-inline searchField">
