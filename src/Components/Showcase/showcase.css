@@ -1,0 +1,21 @@
+.carousel-item {
+  height: 450px;
+}
+
+.carousel-image-1 {
+  background: url("../Showcase/img/swim-422546_1920.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.carousel-image-2 {
+  background: url("../Showcase/img/swimming-pool-1031245_1920.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.carousel-image-3 {
+  background: url("../Showcase/img/swimming-pool-389267_1280.jpg");
+  background-size: cover;
+  background-position: center;
+}
