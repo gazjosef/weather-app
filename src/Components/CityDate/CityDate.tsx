@@ -1,5 +1,11 @@
-import React from "react";
-import "./CityDate.css";
+import React from 'react';
+import './CityDate.css';
+
+// type CityDateProps = {
+//   city: string;
+//   country: string;
+//   time: number;
+// };
 
 const CityDate = (props: any) => (
   <div id="cityAndDate" className="text-center">
