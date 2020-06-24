@@ -1,13 +1,13 @@
 import React from 'react';
 import './CityDate.css';
 
-// type CityDateProps = {
-//   city: string;
-//   country: string;
-//   time: number;
-// };
+type CityDateProps = {
+  city: any;
+  country: any;
+  time: any;
+};
 
-const CityDate = (props: any) => (
+const CityDate = (props: CityDateProps) => (
   <div id="cityAndDate" className="text-center">
     <div className="city">
       {props.city && props.country && (
