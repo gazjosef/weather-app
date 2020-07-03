@@ -1,14 +1,17 @@
-import React, { Component } from "react";
-import "./App.css";
-import "./iPhone.css";
-import "./weather-background.css";
+import React, { Component } from 'react';
+import './App.css';
+import './iPhone.css';
+import './weather-background.css';
 
 // LAYOUT
-import SearchField from "./Components/SearchField/SearchField"
+import SearchField from './Components/SearchField/SearchField';
 // import SecondaryInfo from "./Components/SecondaryInfo/SecondaryInfo";
-import MainInfo from "./Components/MainInfo/MainInfo";
-import CityDate from "./Components/CityDate/CityDate";
-import WeatherIcon from "./Components/WeatherIcon/WeatherIcon";
+import MainInfo from './Components/MainInfo/MainInfo';
+import CityDate from './Components/CityDate/CityDate';
+import WeatherIcon from './Components/WeatherIcon/WeatherIcon';
+
+// Pages
+import { Mobile } from './Components/Pages/Mobile';
 
 class App extends Component {
   state = {
@@ -23,27 +26,27 @@ class App extends Component {
     temp_max: undefined,
     description: undefined,
     error: undefined,
-    background: "sky-gradient-11",
+    background: 'sky-gradient-11',
     latitude: undefined,
     longitude: undefined,
-    time: undefined
+    time: undefined,
   };
 
   timeConverter(UNIX_timestamp: number) {
     let a = new Date(UNIX_timestamp * 1000);
     const months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec"
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
     ];
     let year = a.getFullYear();
     let month = months[a.getMonth()];
@@ -51,30 +54,30 @@ class App extends Component {
     let hour = a.getHours();
     let min = a.getMinutes();
     // let sec = a.getSeconds();
-    let time = date + " " + month + " " + year + " " + hour + ":" + min;
+    let time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
     return time;
   }
 
   iconConverter(icon: string) {
     const convertIcon: any = {
-      "01d": "sun-solid",
-      "02d": "cloud-sun-solid",
-      "03d": "cloud-solid",
-      "04d": "cloud-solid",
-      "09d": "cloud-sun-rain-solid",
-      "10d": "cloud-showers-heavy-solid",
-      "11d": "poo-storm-solid",
-      "13d": "snowflake-solid",
-      "50d": "smog-solid",
-      "01n": "moon-solid",
-      "02n": "cloud-moon-solid",
-      "03n": "cloud-solid",
-      "04n": "cloud-solid",
-      "09n": "cloud-moon-rain-solid",
-      "10n": "cloud-showers-heavy-solid",
-      "11n": "poo-storm-solid",
-      "13n": "snowflake-solid",
-      "50n": "smog-solid"
+      '01d': 'sun-solid',
+      '02d': 'cloud-sun-solid',
+      '03d': 'cloud-solid',
+      '04d': 'cloud-solid',
+      '09d': 'cloud-sun-rain-solid',
+      '10d': 'cloud-showers-heavy-solid',
+      '11d': 'poo-storm-solid',
+      '13d': 'snowflake-solid',
+      '50d': 'smog-solid',
+      '01n': 'moon-solid',
+      '02n': 'cloud-moon-solid',
+      '03n': 'cloud-solid',
+      '04n': 'cloud-solid',
+      '09n': 'cloud-moon-rain-solid',
+      '10n': 'cloud-showers-heavy-solid',
+      '11n': 'poo-storm-solid',
+      '13n': 'snowflake-solid',
+      '50n': 'smog-solid',
     };
     return convertIcon[icon];
   }
@@ -103,11 +106,11 @@ class App extends Component {
         description: data.weather[0].description,
         background: this.backgroundConverter(data.weather[0].icon),
         latitude: data.coord.lat,
-        longitude: data.coord.lon
+        longitude: data.coord.lon,
       });
       const zone = await this.getTimeZone();
       this.setState({
-        time: zone.formatted
+        time: zone.formatted,
       });
     } else {
       this.setState({
@@ -123,7 +126,7 @@ class App extends Component {
         description: undefined,
         background: undefined,
         latitude: undefined,
-        longitude: undefined
+        longitude: undefined,
       });
     }
   };
@@ -143,24 +146,24 @@ class App extends Component {
 
   backgroundConverter(icon: string) {
     const weatherBackground: any = {
-      "01d": "sky-gradient-11",
-      "02d": "sky-gradient-09",
-      "03d": "sky-gradient-13",
-      "04d": "sky-gradient-14",
-      "09d": "sky-gradient-14",
-      "10d": "sky-gradient-15",
-      "11d": "sky-gradient-15",
-      "13d": "sky-gradient-09",
-      "50d": "sky-gradient-08",
-      "01n": "sky-gradient-05",
-      "02n": "sky-gradient-21",
-      "03n": "sky-gradient-03",
-      "04n": "sky-gradient-03",
-      "09n": "sky-gradient-22",
-      "10n": "sky-gradient-03",
-      "11n": "sky-gradient-21",
-      "13n": "sky-gradient-02",
-      "50n": "sky-gradient-20"
+      '01d': 'sky-gradient-11',
+      '02d': 'sky-gradient-09',
+      '03d': 'sky-gradient-13',
+      '04d': 'sky-gradient-14',
+      '09d': 'sky-gradient-14',
+      '10d': 'sky-gradient-15',
+      '11d': 'sky-gradient-15',
+      '13d': 'sky-gradient-09',
+      '50d': 'sky-gradient-08',
+      '01n': 'sky-gradient-05',
+      '02n': 'sky-gradient-21',
+      '03n': 'sky-gradient-03',
+      '04n': 'sky-gradient-03',
+      '09n': 'sky-gradient-22',
+      '10n': 'sky-gradient-03',
+      '11n': 'sky-gradient-21',
+      '13n': 'sky-gradient-02',
+      '50n': 'sky-gradient-20',
     };
     return weatherBackground[icon];
   }
@@ -174,16 +177,16 @@ class App extends Component {
       description,
       icon,
       temperature,
-      time
+      time,
     } = this.state;
     return (
       <div className="wrapper">
+        <Mobile />
         <div className="center">
           {/* iPhone / iPad */}
           <div className="mobile">
             {/* Screen */}
             <div className={`screen ${background}`}>
-
               <SearchField getWeather={this.getWeather} />
               <div className="weather-display">
                 <CityDate
@@ -195,7 +198,6 @@ class App extends Component {
                 <WeatherIcon icon={icon} description={description} />
                 <MainInfo temperature={temperature} description={description} />
               </div>
-
             </div>
             {/* Home Button */}
             <div className="home"></div>

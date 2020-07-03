@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const Mobile = () => {
+export const Tablet = () => {
   return (
     <div>
-      <h1>Hello World</h1>
+      <h1>Tablet</h1>
     </div>
   );
 };
