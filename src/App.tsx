@@ -4,11 +4,11 @@ import './iPhone.css';
 import './weather-background.css';
 
 // LAYOUT
-import SearchField from './Components/SearchField/SearchField';
+import { SearchField } from './Components/Layout/SearchField/SearchField';
 // import SecondaryInfo from "./Components/SecondaryInfo/SecondaryInfo";
-import MainInfo from './Components/MainInfo/MainInfo';
-import CityDate from './Components/CityDate/CityDate';
-import WeatherIcon from './Components/WeatherIcon/WeatherIcon';
+import MainInfo from './Components/Layout/MainInfo/MainInfo';
+import { CityDate } from './Components/Layout/CityDate/CityDate';
+import WeatherIcon from './Components/Layout/WeatherIcon/WeatherIcon';
 
 // Pages
 import { Mobile } from './Components/Pages/Mobile';

@@ -7,7 +7,7 @@ type CityDateProps = {
   time: any;
 };
 
-const CityDate = (props: CityDateProps) => (
+export const CityDate = (props: CityDateProps) => (
   <div id="cityAndDate" className="text-center">
     <div className="city">
       {props.city && props.country && (
@@ -19,5 +19,3 @@ const CityDate = (props: CityDateProps) => (
     <div className="date">{props.time && <p>{props.time}</p>}</div>
   </div>
 );
-
-export default CityDate;
