@@ -21,5 +21,3 @@ export const SearchField = (props: any) => (
     </button>
   </form>
 );
-
-// export default SearchField;
