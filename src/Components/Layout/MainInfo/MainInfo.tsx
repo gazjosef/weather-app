@@ -1,12 +1,12 @@
-import React from "react";
-import "./MainInfo.css";
+import React from 'react';
+import './MainInfo.css';
 
-const MainInfo = (props: any) => (
+export const MainInfo = (props: any) => (
   <div id="main-info">
     <div className="text-left px-3">
       {props.temperature && (
         <p className="main-key">
-          Temperature:{" "}
+          Temperature:{' '}
           <span className="main-value">
             {props.temperature}
             <sup>&deg;</sup>
@@ -22,5 +22,3 @@ const MainInfo = (props: any) => (
     </div>
   </div>
 );
-
-export default MainInfo;

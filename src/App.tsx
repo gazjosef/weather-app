@@ -6,9 +6,9 @@ import './weather-background.css';
 // LAYOUT
 import { SearchField } from './Components/Layout/SearchField/SearchField';
 // import SecondaryInfo from "./Components/SecondaryInfo/SecondaryInfo";
-import MainInfo from './Components/Layout/MainInfo/MainInfo';
+import { MainInfo } from './Components/Layout/MainInfo/MainInfo';
 import { CityDate } from './Components/Layout/CityDate/CityDate';
-import WeatherIcon from './Components/Layout/WeatherIcon/WeatherIcon';
+import { WeatherIcon } from './Components/Layout/WeatherIcon/WeatherIcon';
 
 // Pages
 import { Mobile } from './Components/Pages/Mobile';

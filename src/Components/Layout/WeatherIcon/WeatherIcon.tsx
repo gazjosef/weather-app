@@ -1,7 +1,7 @@
 import React from 'react';
 import './WeatherIcon.css';
 
-const WeatherIcon = (props: any) => {
+export const WeatherIcon = (props: any) => {
   if (props.icon !== undefined) {
     return (
       <div id="weather-icon">
@@ -16,5 +16,3 @@ const WeatherIcon = (props: any) => {
     return <div id="weather-icon" />;
   }
 };
-
-export default WeatherIcon;
