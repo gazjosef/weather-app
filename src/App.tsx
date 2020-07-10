@@ -11,7 +11,7 @@ import { CityDate } from './Components/Layout/CityDate/CityDate';
 import { WeatherIcon } from './Components/Layout/WeatherIcon/WeatherIcon';
 
 // Pages
-import { Mobile } from './Components/Pages/Mobile';
+import { Mobile } from './Components/Pages/Mobile/Mobile';
 
 class App extends Component {
   state = {

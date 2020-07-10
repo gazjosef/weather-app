@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import '../../iPhone.css';
+import './iPhone.css';
 
 export const Mobile = () => {
   return (
