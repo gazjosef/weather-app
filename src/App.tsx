@@ -84,6 +84,7 @@ class App extends Component {
     return convertIcon[icon];
   }
 
+  //TODO: GET THIS WORKING
   getWeather = async (e: any) => {
     e.preventDefault();
     const city = e.target.elements.city.value;
