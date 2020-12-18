@@ -13,6 +13,8 @@ import { WeatherIcon } from './Components/Layout/WeatherIcon/WeatherIcon';
 // Pages
 import { Mobile } from './Components/Pages/Mobile/Mobile';
 
+const API_KEY = "4a64ed09d073cdac231c53e1a3b62181"
+
 class App extends Component {
   state = {
     temperature: undefined,
@@ -88,13 +90,13 @@ class App extends Component {
     const country = e.target.elements.country.value;
 
     const api_call = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`
     );
     const data = await api_call.json();
 
     if (city && country) {
       this.setState({
-        temperature: data.main.temp,
+        // temperature: data.main.temp,
         city: data.name,
         country: data.sys.country,
         date: this.timeConverter(data.dt),
