@@ -88,101 +88,101 @@ class App extends Component {
     e.preventDefault();
     const city = e.target.elements.city.value;
     const country = e.target.elements.country.value;
-
+    
     const api_call = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`
-    );
-    const data = await api_call.json();
-
-    if (city && country) {
-      this.setState({
-        // temperature: data.main.temp,
-        city: data.name,
-        country: data.sys.country,
-        date: this.timeConverter(data.dt),
-        icon: this.iconConverter(data.weather[0].icon),
-        humidity: data.main.humidity,
-        wind: data.wind.speed,
-        temp_min: data.main.temp_min,
-        temp_max: data.main.temp_max,
-        description: data.weather[0].description,
-        background: this.backgroundConverter(data.weather[0].icon),
-        latitude: data.coord.lat,
-        longitude: data.coord.lon,
-      });
-      const zone = await this.getTimeZone();
-      this.setState({
-        time: zone.formatted,
-      });
-    } else {
-      this.setState({
-        temperature: undefined,
-        city: undefined,
-        country: undefined,
-        date: undefined,
-        icon: undefined,
-        humidity: undefined,
-        wind: undefined,
-        temp_min: undefined,
-        temp_max: undefined,
-        description: undefined,
-        background: undefined,
-        latitude: undefined,
-        longitude: undefined,
-      });
-    }
-  };
-
-  getTimeZone = async () => {
-    const { latitude, longitude } = this.state;
-    const lat = latitude;
-    const long = longitude;
-
-    const timezone_api_call = await fetch(
-      `https://api.timezonedb.com/v2.1/get-time-zone?key=${process.env.REACT_APP_TIMEZONEDB_API_KEY}&format=json&by=position&lat=${lat}&lng=${long}`
-    );
-    const zone = await timezone_api_call.json();
-
-    return zone;
-  };
-
-  backgroundConverter(icon: string) {
-    const weatherBackground: any = {
-      '01d': 'sky-gradient-11',
-      '02d': 'sky-gradient-09',
-      '03d': 'sky-gradient-13',
-      '04d': 'sky-gradient-14',
-      '09d': 'sky-gradient-14',
-      '10d': 'sky-gradient-15',
-      '11d': 'sky-gradient-15',
-      '13d': 'sky-gradient-09',
-      '50d': 'sky-gradient-08',
-      '01n': 'sky-gradient-05',
-      '02n': 'sky-gradient-21',
-      '03n': 'sky-gradient-03',
-      '04n': 'sky-gradient-03',
-      '09n': 'sky-gradient-22',
-      '10n': 'sky-gradient-03',
-      '11n': 'sky-gradient-21',
-      '13n': 'sky-gradient-02',
-      '50n': 'sky-gradient-20',
+      );
+      const data = await api_call.json();
+      
+      if (city && country) {
+        this.setState({
+          // temperature: data.main.temp,
+          city: data.name,
+          country: data.sys.country,
+          date: this.timeConverter(data.dt),
+          icon: this.iconConverter(data.weather[0].icon),
+          humidity: data.main.humidity,
+          wind: data.wind.speed,
+          temp_min: data.main.temp_min,
+          temp_max: data.main.temp_max,
+          description: data.weather[0].description,
+          background: this.backgroundConverter(data.weather[0].icon),
+          latitude: data.coord.lat,
+          longitude: data.coord.lon,
+        });
+        const zone = await this.getTimeZone();
+        this.setState({
+          time: zone.formatted,
+        });
+      } else {
+        this.setState({
+          temperature: undefined,
+          city: undefined,
+          country: undefined,
+          date: undefined,
+          icon: undefined,
+          humidity: undefined,
+          wind: undefined,
+          temp_min: undefined,
+          temp_max: undefined,
+          description: undefined,
+          background: undefined,
+          latitude: undefined,
+          longitude: undefined,
+        });
+      }
     };
-    return weatherBackground[icon];
-  }
-
-  render() {
-    const {
-      background,
-      city,
-      country,
-      // date,
-      description,
-      icon,
-      temperature,
-      time,
-    } = this.state;
-    return (
-      <div className="wrapper">
+    
+    getTimeZone = async () => {
+      const { latitude, longitude } = this.state;
+      const lat = latitude;
+      const long = longitude;
+      
+      const timezone_api_call = await fetch(
+        `https://api.timezonedb.com/v2.1/get-time-zone?key=${API_KEY}&format=json&by=position&lat=${lat}&lng=${long}`
+        );
+        const zone = await timezone_api_call.json();
+        
+        return zone;
+      };
+      
+      backgroundConverter(icon: string) {
+        const weatherBackground: any = {
+          '01d': 'sky-gradient-11',
+          '02d': 'sky-gradient-09',
+          '03d': 'sky-gradient-13',
+          '04d': 'sky-gradient-14',
+          '09d': 'sky-gradient-14',
+          '10d': 'sky-gradient-15',
+          '11d': 'sky-gradient-15',
+          '13d': 'sky-gradient-09',
+          '50d': 'sky-gradient-08',
+          '01n': 'sky-gradient-05',
+          '02n': 'sky-gradient-21',
+          '03n': 'sky-gradient-03',
+          '04n': 'sky-gradient-03',
+          '09n': 'sky-gradient-22',
+          '10n': 'sky-gradient-03',
+          '11n': 'sky-gradient-21',
+          '13n': 'sky-gradient-02',
+          '50n': 'sky-gradient-20',
+        };
+        return weatherBackground[icon];
+      }
+      
+      render() {
+        const {
+          background,
+          city,
+          country,
+          // date,
+          description,
+          icon,
+          temperature,
+          time,
+        } = this.state;
+        return (
+          <div className="wrapper">
         <Mobile />
         {/*
          */}
@@ -198,7 +198,7 @@ class App extends Component {
                   country={country}
                   // date={date}
                   time={time}
-                />
+                  />
                 <WeatherIcon icon={icon} description={description} />
                 <MainInfo temperature={temperature} description={description} />
               </div>
