@@ -184,7 +184,7 @@ class App extends Component {
         } = this.state;
         return (
           <div className="wrapper">
-        <Mobile />
+        {/* <Mobile /> */}
         {/*
          */}
         <div className="center">
