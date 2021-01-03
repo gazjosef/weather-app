@@ -26,6 +26,7 @@ export const WeatherApp = () => {
     return (
         <div className={`screen ${background}`}>
             <SearchField />
+            <div className="weather-display">
                 <CityDate 
                     city={city}
                     country={country}
@@ -34,8 +35,6 @@ export const WeatherApp = () => {
                 />
                 <WeatherIcon icon={icon} description={description} />
                 <MainInfo temperature={temperature} description={description} />
-            <div className="weather-display">
-                {/* <CityDate /> */}
             </div>
             <h1>Weather APP</h1>
             <p>The Temp is: {temperature}</p>
