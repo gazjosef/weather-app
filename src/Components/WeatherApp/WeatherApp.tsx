@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 // LAYOUT
 import { SearchField } from '../Layout/SearchField/SearchField'
 import { CityDate } from '../Layout/CityDate/CityDate'
+import { WeatherIcon } from '../Layout/WeatherIcon/WeatherIcon'
+import { MainInfo } from '../Layout/MainInfo/MainInfo'
 
 export const WeatherApp = () => {
     const [temperature, setTemperature] = useState(undefined)
@@ -30,6 +32,8 @@ export const WeatherApp = () => {
                     // date={date}
                     time={time}
                 />
+                <WeatherIcon icon={icon} description={description} />
+                <MainInfo temperature={temperature} description={description} />
             <div className="weather-display">
                 {/* <CityDate /> */}
             </div>
