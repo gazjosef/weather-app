@@ -1,5 +1,8 @@
 import React, { Fragment } from 'react';
+
+import { WeatherApp } from '../../WeatherApp/WeatherApp';
 import './iPhone.css';
+
 
 export const Mobile = () => {
   return (
@@ -7,11 +10,7 @@ export const Mobile = () => {
       <div className="center">
         {/* iPhone / iPad */}
         <div className="mobile">
-          {/* Screen */}
-          <div className={`screen`}>
-            search-field
-            <div className="weather-display">weather-display</div>
-          </div>
+          <WeatherApp />
           {/* Home Button */}
           <div className="home"></div>
           <div className="inner"></div>

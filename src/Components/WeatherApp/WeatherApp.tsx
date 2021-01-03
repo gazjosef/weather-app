@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 
+// LAYOUT
+import {SearchField} from '../Layout/SearchField/SearchField'
+
 export const WeatherApp = () => {
     const [temperature, setTemperature] = useState(undefined)
     const [city, setCity] = useState(undefined)
@@ -18,8 +21,10 @@ export const WeatherApp = () => {
     const [time, setTime] = useState(undefined)
 
     return (
-        <div>
+        <div className={`screen ${background}`}>
+            <SearchField />
             <h1>Weather APP</h1>
+            <p>The Temp is: {temperature}</p>
         </div>
     )
 }

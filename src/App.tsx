@@ -84,7 +84,6 @@ class App extends Component {
     return convertIcon[icon];
   }
 
-  //TODO: GET THIS WORKING
   getWeather = async (e: any) => {
     e.preventDefault();
     const city = e.target.elements.city.value;
@@ -184,15 +183,14 @@ class App extends Component {
         } = this.state;
         return (
           <div className="wrapper">
-        {/* <Mobile /> */}
-        {/*
-         */}
-        <div className="center">
-          {/* iPhone / iPad */}
-          <div className="mobile">
-            {/* Screen */}
-            <div className={`screen ${background}`}>
-              <SearchField getWeather={this.getWeather} />
+            <Mobile />
+            
+            <div className="center">
+            {/* iPhone / iPad */}
+              <div className="mobile">
+                {/* Screen */}
+                <div className={`screen ${background}`}>
+                <SearchField getWeather={this.getWeather} />
               <div className="weather-display">
                 <CityDate
                   city={city}
@@ -204,23 +202,23 @@ class App extends Component {
                 <MainInfo temperature={temperature} description={description} />
               </div>
             </div>
-            {/* Home Button */}
-            <div className="home"></div>
-            <div className="inner"></div>
-            {/* Volume */}
-            <ul className="volume">
-              <li></li>
-              <li></li>
-            </ul>
-            <ul className="silent">
-              <li></li>
-            </ul>
-            <ul className="sleep">
-              <li></li>
-            </ul>
+                {/* Home Button */}
+                <div className="home"></div>
+                <div className="inner"></div>
+                {/* Volume */}
+                <ul className="volume">
+                  <li></li>
+                  <li></li>
+                </ul>
+                <ul className="silent">
+                  <li></li>
+                </ul>
+                <ul className="sleep">
+                  <li></li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
     );
   }
 }
