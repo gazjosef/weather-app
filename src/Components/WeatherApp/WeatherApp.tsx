@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 
+const API_KEY = "4a64ed09d073cdac231c53e1a3b62181"
+
+
 // LAYOUT
 import { SearchField } from '../Layout/SearchField/SearchField'
 import { CityDate } from '../Layout/CityDate/CityDate'
