@@ -104,18 +104,18 @@ export const WeatherApp = () => {
             // setTime(zone.formatted)
 
           } else {
-            // setCity("undefined")
-            // setCountry("undefined")
-            // setDate( timeConverter()
+            setCity("")
+            setCountry(undefined)
+            // setDate( timeConverter(undefined)
             // setIcon( iconConverter()
-            // setHumidity("")
-            // setWind("")
-            // setTemp_min("")
-            // setTemp_max("")
-            // setDescription("")
+            setHumidity(undefined)
+            setWind(undefined)
+            setTemp_min(undefined)
+            setTemp_max(undefined)
+            setDescription(undefined)
             // setBackground( backgroundConverter()
-            // setLatitude("")
-            // setLongitude("")
+            setLatitude(undefined)
+            setLongitude(undefined)
         };
     }
         const getTimeZone = async () => {
@@ -158,7 +158,7 @@ export const WeatherApp = () => {
     return (
         <div className={`screen ${background}`}>
             <SearchField getWeather={getWeather}/>
-            {/* <div className="weather-display">
+            <div className="weather-display">
                 <CityDate 
                     city={city}
                     country={country}
@@ -167,7 +167,7 @@ export const WeatherApp = () => {
                 />
                 <WeatherIcon icon={icon} description={description} />
                 <MainInfo temperature={temperature} description={description} />
-            </div> */}
+            </div>
             <h1>Weather APP</h1>
             <p>The Temp is: {temperature}</p>
             <p>The City is: {city}</p>
