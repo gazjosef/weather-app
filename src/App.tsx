@@ -183,41 +183,8 @@ class App extends Component {
         } = this.state;
         return (
           <div className="wrapper">
-            {/* <Mobile /> */}
+            <Mobile />
             
-            <div className="center">
-            {/* iPhone / iPad */}
-              <div className="mobile">
-                {/* Screen */}
-                <div className={`screen ${background}`}>
-                <SearchField getWeather={this.getWeather} />
-                    <div className="weather-display">
-                    <CityDate
-                      city={city}
-                      country={country}
-                      // date={date}
-                      time={time}
-                      />
-                    <WeatherIcon icon={icon} description={description} />
-                    <MainInfo temperature={temperature} description={description} />
-                  </div>
-                </div>
-                {/* Home Button */}
-                <div className="home"></div>
-                <div className="inner"></div>
-                {/* Volume */}
-                <ul className="volume">
-                  <li></li>
-                  <li></li>
-                </ul>
-                <ul className="silent">
-                  <li></li>
-                </ul>
-                <ul className="sleep">
-                  <li></li>
-                </ul>
-              </div>
-            </div>
           </div>
     );
   }

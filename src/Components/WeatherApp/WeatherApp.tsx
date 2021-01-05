@@ -77,16 +77,20 @@ export const WeatherApp = () => {
 
     const getWeather = async (e: any) => {
         e.preventDefault();
+
         const city = e.target.elements.city.value;
         const country = e.target.elements.country.value;
         
         const api_call = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`
-          );
-
+            `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`
+        );
+            
         const data = await api_call.json();
-          
+            
+        console.log(data);
         if (city && country) {
+            const icon = 
+
             setCity(data.name)
             setCountry(data.sys.country)
             //   setDate( timeConverter(data.dt) )
@@ -117,21 +121,24 @@ export const WeatherApp = () => {
             setLatitude(undefined)
             setLongitude(undefined)
         };
+
+        console.log(city);
     }
-        const getTimeZone = async () => {
+        
+    const getTimeZone = async () => {
         //   const { latitude, longitude } = this.state;
-            const lat = latitude;
-            const long = longitude;
+        const lat = latitude;
+        const long = longitude;
+        
+        const timezone_api_call = await fetch(
+        `https://api.timezonedb.com/v2.1/get-time-zone?key=${API_KEY}&format=json&by=position&lat=${lat}&lng=${long}`
+        );
+        const zone = await timezone_api_call.json();
+        
+        return zone;
+    };
           
-          const timezone_api_call = await fetch(
-            `https://api.timezonedb.com/v2.1/get-time-zone?key=${API_KEY}&format=json&by=position&lat=${lat}&lng=${long}`
-            );
-            const zone = await timezone_api_call.json();
-            
-            return zone;
-        };
-          
-        const backgroundConverter = (icon: string) => {
+    const backgroundConverter = (icon: string) => {
         const weatherBackground: any = {
             '01d': 'sky-gradient-11',
             '02d': 'sky-gradient-09',
@@ -152,8 +159,9 @@ export const WeatherApp = () => {
             '13n': 'sky-gradient-02',
             '50n': 'sky-gradient-20',
         };
+
         return weatherBackground[icon];
-        }
+    }
 
     return (
         <div className={`screen ${background}`}>
