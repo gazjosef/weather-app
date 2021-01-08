@@ -122,7 +122,7 @@ export const WeatherApp = () => {
             setLongitude(undefined)
         };
 
-        console.log(city);
+        console.log(background);
     }
         
     const getTimeZone = async () => {
