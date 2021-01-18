@@ -1,0 +1,15 @@
+.cityAndDate {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-family: Helvetica, Arial, Sans-Serif;
+    color: #fff;
+
+    &__city {
+        font-size: 20px;
+    }
+
+    &__date {
+        font-size: 14px;
+      }
+}

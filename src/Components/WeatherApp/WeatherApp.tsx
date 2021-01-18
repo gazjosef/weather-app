@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useState } from 'react'
 
 // LAYOUT
@@ -10,7 +12,7 @@ const API_KEY = "4a64ed09d073cdac231c53e1a3b62181"
 
 export const WeatherApp = () => {
     const [temperature, setTemperature] = useState(0)
-    const [city, setCity] = useState("")
+    const [city, setCity] = useState("Sydney")
     const [date, setDate] = useState(undefined)
     const [icon, setIcon] = useState(undefined)
     const [country, setCountry] = useState(undefined)
@@ -25,7 +27,7 @@ export const WeatherApp = () => {
     const [longitude, setLongitude] = useState(undefined)
     const [time, setTime] = useState(undefined)
 
-    const timeConverter = (UNIX_timestamp: number) => {
+    const timeConverter = (UNIX_timestamp: any) => {
         let a = new Date(UNIX_timestamp * 1000);
         const months = [
           'Jan',
@@ -75,69 +77,6 @@ export const WeatherApp = () => {
         return convertIcon[icon];
     }
 
-    const getWeather = async (e: any) => {
-        e.preventDefault();
-
-        const city = e.target.elements.city.value;
-        const country = e.target.elements.country.value;
-        
-        const api_call = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`
-        );
-            
-        const data = await api_call.json();
-            
-        console.log(data);
-        if (city && country) {
-            const icon = 
-
-            setCity(data.name)
-            setCountry(data.sys.country)
-            //   setDate( timeConverter(data.dt) )
-            //   setIcon( iconConverter(data.weather[0].icon) )
-            setHumidity(data.main.humidity)
-            setWind(data.wind.speed)
-            setTemp_min(data.main.temp_min)
-            setTemp_max(data.main.temp_max)
-            setDescription(data.weather[0].description)
-            // setBackground( backgroundConverter(data.weather[0].icon) )
-            setLatitude(data.coord.lat)
-            setLongitude(data.coord.lon)
-
-            const zone = await getTimeZone();
-            // setTime(zone.formatted)
-
-          } else {
-            setCity("")
-            setCountry(undefined)
-            // setDate( timeConverter(undefined)
-            // setIcon( iconConverter()
-            setHumidity(undefined)
-            setWind(undefined)
-            setTemp_min(undefined)
-            setTemp_max(undefined)
-            setDescription(undefined)
-            // setBackground( backgroundConverter()
-            setLatitude(undefined)
-            setLongitude(undefined)
-        };
-
-        console.log(background);
-    }
-        
-    const getTimeZone = async () => {
-        //   const { latitude, longitude } = this.state;
-        const lat = latitude;
-        const long = longitude;
-        
-        const timezone_api_call = await fetch(
-        `https://api.timezonedb.com/v2.1/get-time-zone?key=${API_KEY}&format=json&by=position&lat=${lat}&lng=${long}`
-        );
-        const zone = await timezone_api_call.json();
-        
-        return zone;
-    };
-          
     const backgroundConverter = (icon: string) => {
         const weatherBackground: any = {
             '01d': 'sky-gradient-11',
@@ -162,6 +101,72 @@ export const WeatherApp = () => {
 
         return weatherBackground[icon];
     }
+
+    const getWeather = async (e: any) => {
+        e.preventDefault();
+
+        const city = e.target.elements.city.value;
+        const country = e.target.elements.country.value;
+        
+        const api_call = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`
+        );
+            
+        const data = await api_call.json();
+            
+        console.log(data);
+
+        if (city && country) {
+            const date = timeConverter(data.dt)
+            const icon = iconConverter(data.weather[0].icon)
+            
+            setCity(data.name),
+            setCountry(data.sys.country),
+            // setDate({}),
+            setIcon(icon),
+            setHumidity(data.main.humidity)
+            setWind(data.wind.speed)
+            setTemp_min(data.main.temp_min)
+            setTemp_max(data.main.temp_max)
+            setDescription(data.weather[0].description)
+            // setBackground( backgroundConverter(data.weather[0].icon) )
+            setLatitude(data.coord.lat)
+            setLongitude(data.coord.lon)
+
+            const zone = await getTimeZone();
+            // setTime(zone.formatted)
+
+          } else {
+            // setCity("")
+            // setCountry(undefined)
+            // // setDate( timeConverter(undefined)
+            // // setIcon( iconConverter()
+            // setHumidity(undefined)
+            // setWind(undefined)
+            // setTemp_min(undefined)
+            // setTemp_max(undefined)
+            // setDescription(undefined)
+            // // setBackground( backgroundConverter()
+            // setLatitude(undefined)
+            // setLongitude(undefined)
+        };
+
+        console.log(background);
+        console.log(data.weather[0].icon);
+    }
+        
+    const getTimeZone = async () => {
+        //   const { latitude, longitude } = this.state;
+        const lat = latitude;
+        const long = longitude;
+        
+        const timezone_api_call = await fetch(
+        `https://api.timezonedb.com/v2.1/get-time-zone?key=${API_KEY}&format=json&by=position&lat=${lat}&lng=${long}`
+        );
+        const zone = await timezone_api_call.json();
+        
+        return zone;
+    };
 
     return (
         <div className={`screen ${background}`}>

@@ -8,7 +8,7 @@ type CityDateProps = {
 };
 
 export const CityDate = (props: CityDateProps) => (
-  <div id="cityAndDate" className="text-center">
+  <div id="cityAndDate" className="cityAndDate text-center">
     <div className="city">
       {props.city && props.country && (
         <p>
@@ -16,6 +16,8 @@ export const CityDate = (props: CityDateProps) => (
         </p>
       )}
     </div>
-    <div className="date">{props.time && <p>{props.time}</p>}</div>
+    <div className="date">
+      {props.time && <p>{props.time}</p>}
+    </div>
   </div>
 );
