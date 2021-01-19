@@ -11,21 +11,24 @@ import { MainInfo } from '../Layout/MainInfo/MainInfo'
 const API_KEY = "4a64ed09d073cdac231c53e1a3b62181"
 
 export const WeatherApp = () => {
-    const [temperature, setTemperature] = useState(0)
-    const [city, setCity] = useState("Sydney")
-    const [date, setDate] = useState(undefined)
-    const [icon, setIcon] = useState(undefined)
-    const [country, setCountry] = useState(undefined)
-    const [humidity, setHumidity] = useState(undefined)
-    const [wind, setWind] = useState(undefined)
-    const [temp_min, setTemp_min] = useState(undefined)
-    const [temp_max, setTemp_max] = useState(undefined)
-    const [description, setDescription] = useState(undefined)
-    const [error, setError] = useState(undefined)
     const [background, setBackground] = useState('sky-gradient-11') 
-    const [latitude, setLatitude] = useState(undefined)
-    const [longitude, setLongitude] = useState(undefined)
-    const [time, setTime] = useState(undefined)
+    const [city, setCity] = useState()
+    const [country, setCountry] = useState()
+    const [date, setDate] = useState()
+    const [description, setDescription] = useState()
+    const [feelslike, setFeelslike] = useState()
+    const [humidity, setHumidity] = useState()
+    const [icon, setIcon] = useState()
+    const [latitude, setLatitude] = useState()
+    const [longitude, setLongitude] = useState()
+    const [sunrise, setSunrise] = useState()
+    const [sunset, setSunset] = useState()
+    const [temp_min, setTemp_min] = useState()
+    const [temp_max, setTemp_max] = useState()
+    const [temperature, setTemperature] = useState(0)
+    const [time, setTime] = useState()
+    const [wind, setWind] = useState()
+    const [windDegrees, setWindDegrees] = useState()
 
     const timeConverter = (UNIX_timestamp: any) => {
         let a = new Date(UNIX_timestamp * 1000);
@@ -115,23 +118,25 @@ export const WeatherApp = () => {
         const data = await api_call.json();
             
         console.log(data);
-
+        
         if (city && country) {
-            const date = timeConverter(data.dt)
-            const icon = iconConverter(data.weather[0].icon)
-            
-            setCity(data.name),
-            setCountry(data.sys.country),
-            // setDate({}),
-            setIcon(icon),
-            setHumidity(data.main.humidity)
-            setWind(data.wind.speed)
-            setTemp_min(data.main.temp_min)
-            setTemp_max(data.main.temp_max)
+            setBackground(data.weather[0].icon)
+            setCity(data.name)
+            setCountry(data.sys.country)
+            setDate(data.dt),
             setDescription(data.weather[0].description)
-            // setBackground( backgroundConverter(data.weather[0].icon) )
+            setFeelslike(data.main.feels_like)
+            setHumidity(data.main.humidity)
+            // setIcon(data.weather[0].icon)
             setLatitude(data.coord.lat)
             setLongitude(data.coord.lon)
+            setSunrise(data.sys.sunrise)
+            setSunset(data.sys.sunset)
+            setTemp_min(data.main.temp_min)
+            setTemp_max(data.main.temp_max)
+            setTemperature(data.main.temp)
+            setWind(data.wind.speed)
+            setWindDegrees(data.wind.deg)
 
             const zone = await getTimeZone();
             // setTime(zone.formatted)
@@ -151,8 +156,24 @@ export const WeatherApp = () => {
             // setLongitude(undefined)
         };
 
-        console.log(background);
-        console.log(data.weather[0].icon);
+        console.log("Background is: ", background);
+        console.log("City is: ", city);
+        console.log("Country is: ", country);
+        console.log("Date is: ", date);
+        console.log("Description is: ", description);
+        console.log("Feelslike is: ", feelslike);
+        console.log("Humidity is: ", humidity);
+        console.log("Icon is: ", icon);
+        console.log("Latitude is: ", latitude);
+        console.log("Longitude is: ", longitude);
+        console.log("Sunrise is: ", sunrise);
+        console.log("Sunset is: ", sunset);
+        console.log("Temp_min is: ", temp_min);
+        console.log("Temp_max is: ", temp_max);
+        console.log("Temperature is: ", temperature);
+        console.log("Time is: ", time);
+        console.log("Wind is: ", wind);
+        console.log("Wind Degrees is: ", windDegrees);
     }
         
     const getTimeZone = async () => {
@@ -167,7 +188,7 @@ export const WeatherApp = () => {
         
         return zone;
     };
-
+    
     return (
         <div className={`screen ${background}`}>
             <SearchField getWeather={getWeather}/>
@@ -181,7 +202,7 @@ export const WeatherApp = () => {
                 <WeatherIcon icon={icon} description={description} />
                 <MainInfo temperature={temperature} description={description} />
             </div>
-            <h1>Weather APP</h1>
+            {/* <h1>Weather APP</h1>
             <p>The Temp is: {temperature}</p>
             <p>The City is: {city}</p>
             <button onClick={() => setTemperature(temperature + 1)}>
@@ -189,7 +210,7 @@ export const WeatherApp = () => {
             </button>
             <button onClick={() => setCity("Sydney")}>
                 Click me for City
-            </button>
+            </button> */}
         </div>
     )
 }
