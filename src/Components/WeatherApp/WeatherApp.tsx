@@ -14,7 +14,7 @@ export const WeatherApp = () => {
     const [background, setBackground] = useState('sky-gradient-11') 
     const [city, setCity] = useState()
     const [country, setCountry] = useState()
-    const [date, setDate] = useState()
+    // const [date, setDate] = useState()
     const [description, setDescription] = useState()
     const [feelslike, setFeelslike] = useState()
     const [humidity, setHumidity] = useState()
@@ -120,21 +120,22 @@ export const WeatherApp = () => {
         console.log(data);
         
         if (city && country) {
-            setBackground(data.weather[0].icon)
+            setBackground(backgroundConverter(data.weather[0].icon))
             setCity(data.name)
             setCountry(data.sys.country)
-            setDate(data.dt),
+            // setDate(data.dt)
             setDescription(data.weather[0].description)
             setFeelslike(data.main.feels_like)
             setHumidity(data.main.humidity)
-            // setIcon(data.weather[0].icon)
+            setIcon(iconConverter(data.weather[0].icon))
             setLatitude(data.coord.lat)
             setLongitude(data.coord.lon)
-            setSunrise(data.sys.sunrise)
-            setSunset(data.sys.sunset)
+            setSunrise(timeConverter(data.sys.sunrise))
+            setSunset(timeConverter(data.sys.sunset))
             setTemp_min(data.main.temp_min)
             setTemp_max(data.main.temp_max)
             setTemperature(data.main.temp)
+            setTime(timeConverter(data.dt))
             setWind(data.wind.speed)
             setWindDegrees(data.wind.deg)
 
@@ -159,7 +160,6 @@ export const WeatherApp = () => {
         console.log("Background is: ", background);
         console.log("City is: ", city);
         console.log("Country is: ", country);
-        console.log("Date is: ", date);
         console.log("Description is: ", description);
         console.log("Feelslike is: ", feelslike);
         console.log("Humidity is: ", humidity);
