@@ -1,7 +1,6 @@
 import React from 'react';
-import './SearchField.css';
 
-export const SearchField = (props: any) => (
+export const SearchField = props => (
   <form onSubmit={props.getWeather} className="form-inline searchField">
     <input
       className="form-control mr-2"

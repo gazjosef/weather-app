@@ -1,7 +1,6 @@
 import React from 'react';
-import './MainInfo.css';
 
-export const MainInfo = (props: any) => (
+export const MainInfo = (props) => (
   <div id="main-info">
     <div className="text-left px-3">
       {props.temperature && (

@@ -1,12 +1,13 @@
 import React from 'react';
-import './WeatherIcon.css';
 
-export const WeatherIcon = (props: any) => {
+export const WeatherIcon = (props) => {
   if (props.icon !== undefined) {
     return (
       <div id="weather-icon">
         <img
-          src={require(`../../../Assets/icons/${props.icon}.svg`)}
+          src={require(
+            `../../../assets/icons/${props.icon}.svg`
+          ).default}
           alt={props.description}
           className="filter-white"
         />
