@@ -1,9 +1,11 @@
 @import "./components/layout/layout";
 @import "./components/pages/pages";
 @import "./components/weatherApp/WeatherBackground";
+@import "./styles/base/base";
 
 
 .App {
   text-align: center;
+  // background-color: DeepSkyBlue;
 }
 
