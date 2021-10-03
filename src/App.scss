@@ -1,9 +1,10 @@
-@import "./components/layout/layout";
-@import "./components/pages/pages";
-@import "./components/weatherApp/WeatherBackground";
+// @import "./components/layout/layout";
+// @import "./components/pages/pages";
+// @import "./components/weatherApp/WeatherBackground";
+
+@import "./styles/abstract/mixins";
+@import "./styles/abstract/variables";
+
 @import "./styles/base/base";
 
-.App {
-  text-align: center;
-  // background-color: DeepSkyBlue;
-}
+@import "./styles/layout/iphone";
