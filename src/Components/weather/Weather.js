@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 
+import MainWindow from "../layout/MainWindow";
+import Forecast from "../layout/Forecast";
+
 const API_KEY = "4a64ed09d073cdac231c53e1a3b62181";
 
 export default function Weather() {
+  // Get Weather State
   const [background, setBackground] = useState("sky-gradient-11");
   const [city, setCity] = useState();
   const [country, setCountry] = useState();
-  // const [date, setDate] = useState()
   const [description, setDescription] = useState();
   const [feelslike, setFeelslike] = useState();
   const [humidity, setHumidity] = useState();
@@ -30,12 +33,11 @@ export default function Weather() {
 
       const data = await api_call.json();
 
-      console.log(data);
+      console.table(data);
 
       setBackground(backgroundConverter(data.weather[0].icon));
       setCity(data.name);
       setCountry(data.sys.country);
-      // setDate(data.dt)
       setDescription(data.weather[0].description);
       setFeelslike(data.main.feels_like);
       setHumidity(data.main.humidity);
@@ -126,12 +128,28 @@ export default function Weather() {
     let min = ("0" + a.getMinutes()).slice(-2);
     // let sec = a.getSeconds();
     let time = day + " " + month + " " + year + " " + hour + ":" + min;
+
     return time;
   };
+
+  useEffect(() => {
+    const getFiveDay = async (e) => {
+      const api_call = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?q=sydney,nsw&appid=${API_KEY}`
+      );
+
+      const fiveDayData = await api_call.json();
+
+      console.log(fiveDayData);
+    };
+    getFiveDay();
+  }, []);
 
   return (
     <div className="screen">
       <h1>Weather</h1>
+      <MainWindow />
+      <Forecast />
     </div>
   );
 }
