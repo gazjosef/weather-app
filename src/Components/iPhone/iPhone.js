@@ -1,15 +1,9 @@
-import React from "react";
-
-import { WeatherApp } from "../../weatherApp/WeatherApp";
-
-export const Mobile = () => {
+export default function iPhone() {
   return (
     <>
       <div className="center">
         {/* iPhone / iPad */}
         <div className="mobile">
-          <WeatherApp />
-
           {/* Home Button */}
           <div className="home"></div>
           <div className="inner"></div>
@@ -31,4 +25,4 @@ export const Mobile = () => {
       </div>
     </>
   );
-};
+}

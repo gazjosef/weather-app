@@ -1,12 +1,14 @@
-import './App.scss';
+import "./App.scss";
 
-import { Mobile } from './components/pages/mobile/Mobile';
+import { Mobile } from "./components/pages/mobile/Mobile";
+import IPhone from "./components/iPhone/iPhone";
 
 function App() {
   return (
-    <div className="App">
-      <Mobile />
-    </div>
+    <>
+      {/* <Mobile /> */}
+      <IPhone />
+    </>
   );
 }
 

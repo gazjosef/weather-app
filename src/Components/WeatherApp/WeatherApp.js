@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 import { CityDate } from "../layout/cityDate/CityDate";
 import { MainInfo } from "../layout/mainInfo/MainInfo";
-import { SearchField } from "../layout/searchField/SearchField";
 import { WeatherIcon } from "../layout/weatherIcon/WeatherIcon";
 
 const API_KEY = "4a64ed09d073cdac231c53e1a3b62181";
@@ -28,15 +27,6 @@ export const WeatherApp = () => {
   const [windDegrees, setWindDegrees] = useState();
 
   useEffect(() => {
-    // const getFiveDays = async (e) => {
-    //   const five_day_call = await fetch(
-    //     `api.openweathermap.org/data/2.5/forecast?q=sydney,nsw,au&appid=${API_KEY}`
-    //   );
-    //   const fiveDayData = await five_day_call.json();
-    //   console.log(fiveDayData);
-    // };
-    // getFiveDays();
-
     const getWeather = async (e) => {
       const api_call = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=sydney,au&appid=${API_KEY}&units=metric`
@@ -64,24 +54,6 @@ export const WeatherApp = () => {
       setTime(timeConverter(data.dt));
       setWind(data.wind.speed);
       setWindDegrees(data.wind.deg);
-
-      // console.log("Background is: ", background);
-      // console.log("City is: ", city);
-      // console.log("Country is: ", country);
-      // console.log("Description is: ", description);
-      // console.log("Feelslike is: ", feelslike);
-      // console.log("Humidity is: ", humidity);
-      // console.log("Icon is: ", icon);
-      // console.log("Latitude is: ", latitude);
-      // console.log("Longitude is: ", longitude);
-      // console.log("Sunrise is: ", sunrise);
-      // console.log("Sunset is: ", sunset);
-      // console.log("Temp_min is: ", temp_min);
-      // console.log("Temp_max is: ", temp_max);
-      // console.log("Temperature is: ", temperature);
-      // console.log("Time is: ", time);
-      // console.log("Wind is: ", wind);
-      // console.log("Wind Degrees is: ", windDegrees);
     };
     getWeather();
   }, []);
@@ -161,79 +133,8 @@ export const WeatherApp = () => {
     return time;
   };
 
-  const getWeather = async (e) => {
-    e.preventDefault();
-
-    const city = e.target.elements.city.value;
-    const country = e.target.elements.country.value;
-
-    const api_call = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`
-    );
-
-    const data = await api_call.json();
-
-    console.log(data);
-
-    if (city && country) {
-      setBackground(backgroundConverter(data.weather[0].icon));
-      setCity(data.name);
-      setCountry(data.sys.country);
-      // setDate(data.dt)
-      setDescription(data.weather[0].description);
-      setFeelslike(data.main.feels_like);
-      setHumidity(data.main.humidity);
-      setIcon(iconConverter(data.weather[0].icon));
-      setLatitude(data.coord.lat);
-      setLongitude(data.coord.lon);
-      setSunrise(timeConverter(data.sys.sunrise));
-      setSunset(timeConverter(data.sys.sunset));
-      setTemp_min(data.main.temp_min);
-      setTemp_max(data.main.temp_max);
-      setTemperature(Math.floor(data.main.temp));
-      setTime(timeConverter(data.dt));
-      setWind(data.wind.speed);
-      setWindDegrees(data.wind.deg);
-
-      // const zone = await getTimeZone();
-      // setTime(zone.formatted)
-    } else {
-      // setCity("")
-      // setCountry(undefined)
-      // // setDate( timeConverter(undefined)
-      // // setIcon( iconConverter()
-      // setHumidity(undefined)
-      // setWind(undefined)
-      // setTemp_min(undefined)
-      // setTemp_max(undefined)
-      // setDescription(undefined)
-      // // setBackground( backgroundConverter()
-      // setLatitude(undefined)
-      // setLongitude(undefined)
-    }
-
-    console.log("Background is: ", background);
-    console.log("City is: ", city);
-    console.log("Country is: ", country);
-    console.log("Description is: ", description);
-    console.log("Feelslike is: ", feelslike);
-    console.log("Humidity is: ", humidity);
-    console.log("Icon is: ", icon);
-    console.log("Latitude is: ", latitude);
-    console.log("Longitude is: ", longitude);
-    console.log("Sunrise is: ", sunrise);
-    console.log("Sunset is: ", sunset);
-    console.log("Temp_min is: ", temp_min);
-    console.log("Temp_max is: ", temp_max);
-    console.log("Temperature is: ", temperature);
-    console.log("Time is: ", time);
-    console.log("Wind is: ", wind);
-    console.log("Wind Degrees is: ", windDegrees);
-  };
-
   return (
     <div className={`screen ${background}`}>
-      <SearchField getWeather={getWeather} />
       <div className="weather-display">
         <CityDate
           city={city}
