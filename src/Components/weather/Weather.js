@@ -149,7 +149,9 @@ export default function Weather() {
     <div className="screen">
       <div className="weather-app">
         <div className="weather-app__title">
-          <h1>Weather</h1>
+          <h1>
+            {city}, {country}
+          </h1>
         </div>
 
         <MainWindow />
