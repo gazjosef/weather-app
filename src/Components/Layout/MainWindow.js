@@ -1,15 +1,17 @@
-export default function MainWindow() {
+import { FaWind } from "react-icons";
+
+export default function MainWindow({ icon, description, temperature }) {
   return (
     <div className="main-window">
       <div className="main-window__main">
-        <h1>Icon</h1>
-        <h1>Description</h1>
+        <h1>{icon}</h1>
+        <h1>{description}</h1>
         <h1>Date</h1>
-        <h1>Temperature</h1>
+        <h1>{temperature}</h1>
       </div>
       <div className="main-window__secondary">
         <div className="secondary-window">
-          <div className="secondary-window__icon">Wind</div>
+          <div className="secondary-window__icon"></div>
           <div className="secondary-window__info">
             <div>Wind</div>
             <div>Wind</div>
