@@ -154,7 +154,11 @@ export default function Weather() {
           </h1>
         </div>
 
-        <MainWindow />
+        <MainWindow
+          icon={icon}
+          description={description}
+          temperature={temperature}
+        />
 
         <Forecast />
       </div>
