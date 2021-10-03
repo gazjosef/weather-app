@@ -147,9 +147,15 @@ export default function Weather() {
 
   return (
     <div className="screen">
-      <h1>Weather</h1>
-      <MainWindow />
-      <Forecast />
+      <div className="weather-app">
+        <div className="weather-app__title">
+          <h1>Weather</h1>
+        </div>
+
+        <MainWindow />
+
+        <Forecast />
+      </div>
     </div>
   );
 }
