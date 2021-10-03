@@ -1,9 +1,14 @@
+import Weather from "../weather/Weather";
+
 export default function iPhone() {
   return (
     <>
       <div className="center">
         {/* iPhone / iPad */}
         <div className="mobile">
+          {/* Weather App */}
+          <Weather />
+
           {/* Home Button */}
           <div className="home"></div>
           <div className="inner"></div>

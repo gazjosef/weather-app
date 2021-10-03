@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import { CityDate } from "../layout/cityDate/CityDate";
-import { MainInfo } from "../layout/mainInfo/MainInfo";
-import { WeatherIcon } from "../layout/weatherIcon/WeatherIcon";
-
 const API_KEY = "4a64ed09d073cdac231c53e1a3b62181";
 
-export const WeatherApp = () => {
+export default function Weather() {
   const [background, setBackground] = useState("sky-gradient-11");
   const [city, setCity] = useState();
   const [country, setCountry] = useState();
@@ -36,7 +32,7 @@ export const WeatherApp = () => {
 
       console.log(data);
 
-      // setBackground(backgroundConverter(data.weather[0].icon));
+      setBackground(backgroundConverter(data.weather[0].icon));
       setCity(data.name);
       setCountry(data.sys.country);
       // setDate(data.dt)
@@ -134,17 +130,8 @@ export const WeatherApp = () => {
   };
 
   return (
-    <div className={`screen ${background}`}>
-      <div className="weather-display">
-        <CityDate
-          city={city}
-          country={country}
-          // date={date}
-          time={time}
-        />
-        <WeatherIcon icon={icon} description={description} />
-        <MainInfo temperature={temperature} description={description} />
-      </div>
+    <div className="screen">
+      <h1>Weather</h1>
     </div>
   );
-};
+}
