@@ -1,4 +1,4 @@
-// import { IconContext } from "react-icons";
+import { IconContext } from "react-icons";
 import {
   FaWind,
   FaThermometerHalf,
@@ -31,26 +31,22 @@ export default function MainWindow({
   humidity,
   pressure,
 }) {
+  const newIcon = (prop) => {
+    return `<${prop} />`;
+  };
+
   return (
     <div className="main-window">
       <div className="main-window__main">
-        {/* {icon !== undefined ? (
-          <img
-            src={require(`../../assets/icons/${icon}.svg`).default}
-            alt={description}
-          />
-        ) : (
-          ""
-        )} */}
-        {/* <IconContext.Provider value={{ size: "50px" }}>
-          <div>
-            <WiDaySunny />
-          </div>
-        </IconContext.Provider> */}
+        {/* ICON */}
+        <IconContext.Provider value={{ size: "5rem" }}>
+          <>{icon !== undefined ? newIcon(icon) : <WiSnow />}</>
+        </IconContext.Provider>
+
         <h1>{icon}</h1>
         <h1>{description}</h1>
         <h1>{time}</h1>
-        <h1>{temperature}</h1>
+        <h1>{temperature}&#8451;</h1>
       </div>
       <div className="main-window__secondary">
         <div className="secondary-window">
@@ -68,7 +64,7 @@ export default function MainWindow({
           </div>
           <div className="secondary-window__info">
             <div>Feels Like</div>
-            <div>{feelslike}</div>
+            <div>{feelslike}&#8451;</div>
           </div>
         </div>
       </div>
