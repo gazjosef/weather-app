@@ -1,17 +1,27 @@
-import { FaWind } from "react-icons";
+import { FaCalendar } from "react-icons/fa/calendar";
 
 export default function MainWindow({ icon, description, temperature }) {
   return (
     <div className="main-window">
       <div className="main-window__main">
-        <h1>{icon}</h1>
+        {icon !== undefined ? (
+          <img
+            src={require(`../../assets/icons/${icon}.svg`).default}
+            alt={description}
+          />
+        ) : (
+          ""
+        )}
+
         <h1>{description}</h1>
         <h1>Date</h1>
         <h1>{temperature}</h1>
       </div>
       <div className="main-window__secondary">
         <div className="secondary-window">
-          <div className="secondary-window__icon"></div>
+          <div className="secondary-window__icon">
+            <FaCalendar />
+          </div>
           <div className="secondary-window__info">
             <div>Wind</div>
             <div>Wind</div>
