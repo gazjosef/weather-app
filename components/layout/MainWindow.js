@@ -39,14 +39,13 @@ export default function MainWindow({
     <div className="main-window">
       <div className="main-window__main">
         {/* ICON */}
-        <IconContext.Provider value={{ size: "5rem" }}>
-          <>{icon !== undefined ? newIcon(icon) : <WiSnow />}</>
-        </IconContext.Provider>
+        {/* <IconContext.Provider value={{ style: "font-size: 60px" }}>
+          <>{icon !== undefined ? <WiSnow /> : <WiSnow />}</>
+        </IconContext.Provider> */}
 
-        <h1>{icon}</h1>
         <h1>{description}</h1>
-        <h1>{time}</h1>
-        <h1>{temperature}&#8451;</h1>
+        <h1 className="heading-main">{time}</h1>
+        <h1 className="heading-secondary">{temperature}&#8451;</h1>
       </div>
       <div className="main-window__secondary">
         <div className="secondary-window">

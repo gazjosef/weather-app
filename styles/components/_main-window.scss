@@ -14,6 +14,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+
+    .heading-main {
+      font-size: 2.5rem;
+    }
+
+    .heading-secondary {
+      font-size: 2rem;
+    }
   }
 
   &__secondary {

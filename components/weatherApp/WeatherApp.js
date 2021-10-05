@@ -20,6 +20,9 @@ export default function App() {
   const [wind, setWind] = useState();
   const [windDegrees, setWindDegrees] = useState();
 
+  // Get Five Day Forecast
+  const [fiveDay, setFiveDay] = useState([]);
+
   useEffect(() => {
     const getWeather = async (e) => {
       const api_call = await fetch(
@@ -155,7 +158,11 @@ export default function App() {
 
       const fiveDayData = await api_call.json();
 
-      console.log(fiveDayData);
+      console.log("This first thing ran", fiveDayData.list);
+
+      setFiveDay(fiveDayData.list);
+
+      console.log("This second thing ran", fiveDay);
     };
     getFiveDay();
   }, []);
