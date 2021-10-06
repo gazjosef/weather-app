@@ -31,7 +31,7 @@ export default function App() {
 
       const data = await api_call.json();
 
-      console.log(data);
+      // console.log(data);
 
       setBackground(backgroundConverter(data.weather[0].icon));
       setCity(data.name);
@@ -49,8 +49,16 @@ export default function App() {
     getWeather();
   }, []);
 
+
+  const exampleFunction = () => {
+    return (
+      <Element />
+    )
+  }
+
   const backgroundConverter = (icon) => {
-    const weatherBackground = {
+    const weatherBackground = {\
+      
       "01d": "sky-gradient-11",
       "02d": "sky-gradient-09",
       "03d": "sky-gradient-13",
@@ -98,30 +106,6 @@ export default function App() {
     return convertIcon[icon];
   };
 
-  // const iconConverter = (icon) => {
-  //   const convertIcon = {
-  //     "01d": "sun-solid",
-  //     "02d": "cloud-sun-solid",
-  //     "03d": "cloud-solid",
-  //     "04d": "cloud-solid",
-  //     "09d": "cloud-sun-rain-solid",
-  //     "10d": "cloud-showers-heavy-solid",
-  //     "11d": "poo-storm-solid",
-  //     "13d": "snowflake-solid",
-  //     "50d": "smog-solid",
-  //     "01n": "moon-solid",
-  //     "02n": "cloud-moon-solid",
-  //     "03n": "cloud-solid",
-  //     "04n": "cloud-solid",
-  //     "09n": "cloud-moon-rain-solid",
-  //     "10n": "cloud-showers-heavy-solid",
-  //     "11n": "poo-storm-solid",
-  //     "13n": "snowflake-solid",
-  //     "50n": "smog-solid",
-  //   };
-  //   return convertIcon[icon];
-  // };
-
   const timeConverter = (UNIX_timestamp) => {
     let a = new Date(UNIX_timestamp * 1000);
     const months = [
@@ -157,6 +141,8 @@ export default function App() {
       );
 
       const fiveDayData = await api_call.json();
+
+      console.log(fiveDayData);
 
       console.log("This first thing ran", fiveDayData.list);
 
