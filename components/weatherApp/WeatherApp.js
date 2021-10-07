@@ -10,6 +10,8 @@ export default function App() {
   const [background, setBackground] = useState("sky-gradient-11");
   const [city, setCity] = useState();
   const [country, setCountry] = useState();
+  const [date, setDate] = useState();
+  const [dt, setDT] = useState();
   const [description, setDescription] = useState();
   const [feelslike, setFeelslike] = useState();
   const [humidity, setHumidity] = useState();
@@ -20,8 +22,8 @@ export default function App() {
   const [wind, setWind] = useState();
   const [windDegrees, setWindDegrees] = useState();
 
-  // Get Five Day Forecast
-  const [fiveDay, setFiveDay] = useState([]);
+  // Get Five Hour Forecast
+  const [fiveHour, setFiveHour] = useState([]);
 
   useEffect(() => {
     const getWeather = async (e) => {
@@ -31,11 +33,13 @@ export default function App() {
 
       const data = await api_call.json();
 
-      // console.log(data);
+      console.log("Get Weather Data", data);
 
       setBackground(backgroundConverter(data.weather[0].icon));
       setCity(data.name);
       setCountry(data.sys.country);
+      setDate(dateConverter(data.dt));
+      setDT(data.dt);
       setDescription(data.weather[0].description);
       setFeelslike(data.main.feels_like);
       setHumidity(data.main.humidity);
@@ -49,16 +53,8 @@ export default function App() {
     getWeather();
   }, []);
 
-
-  const exampleFunction = () => {
-    return (
-      <Element />
-    )
-  }
-
   const backgroundConverter = (icon) => {
-    const weatherBackground = {\
-      
+    const weatherBackground = {
       "01d": "sky-gradient-11",
       "02d": "sky-gradient-09",
       "03d": "sky-gradient-13",
@@ -106,7 +102,7 @@ export default function App() {
     return convertIcon[icon];
   };
 
-  const timeConverter = (UNIX_timestamp) => {
+  const dateConverter = (UNIX_timestamp) => {
     let a = new Date(UNIX_timestamp * 1000);
     const months = [
       "Jan",
@@ -125,33 +121,39 @@ export default function App() {
     let year = a.getFullYear();
     let month = months[a.getMonth()];
     let day = a.getDate();
+    let date = day + " " + month + " " + year;
+
+    return date;
+  };
+
+  const timeConverter = (UNIX_timestamp) => {
+    let a = new Date(UNIX_timestamp * 1000);
+
     let hour = a.getHours();
     let min = ("0" + a.getMinutes()).slice(-2);
     // let sec = a.getSeconds();
-    // let time = day + " " + month + " " + year + " " + hour + ":" + min;
-    let time = day + " " + month + " " + year;
+    let time = hour + ":" + min;
 
     return time;
   };
 
   useEffect(() => {
-    const getFiveDay = async (e) => {
+    const getHourForecast = async (e) => {
       const api_call = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?q=sydney,nsw&appid=${API_KEY}`
       );
 
-      const fiveDayData = await api_call.json();
+      const fiveHourData = await api_call.json();
 
-      console.log(fiveDayData);
+      console.log("Get Hour Data", fiveHourData.list);
 
-      console.log("This first thing ran", fiveDayData.list);
-
-      setFiveDay(fiveDayData.list);
-
-      console.log("This second thing ran", fiveDay);
+      setFiveHour(fiveHourData.list.slice(0, 5));
     };
-    getFiveDay();
+    getHourForecast();
   }, []);
+
+  console.log("setDT", dt);
+  console.log("setFiveHour", fiveHour);
 
   return (
     <div className="screen">
@@ -165,6 +167,7 @@ export default function App() {
         <MainWindow
           icon={icon}
           description={description}
+          date={date}
           time={time}
           temperature={temperature}
           wind={wind}
@@ -173,7 +176,11 @@ export default function App() {
           pressure={pressure}
         />
 
-        <Forecast />
+        <Forecast
+          fiveHour={fiveHour}
+          iconConverter={iconConverter}
+          timeConverter={timeConverter}
+        />
       </div>
     </div>
   );

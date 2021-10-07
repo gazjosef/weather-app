@@ -24,7 +24,8 @@ import {
 export default function MainWindow({
   icon,
   description,
-  time,
+  date,
+  // time,
   temperature,
   wind,
   feelslike,
@@ -42,7 +43,7 @@ export default function MainWindow({
 
         <h1>{icon}</h1>
         <h1>{description}</h1>
-        <h1 className="heading-main">{time}</h1>
+        <h1 className="heading-main">{date}</h1>
         <h1 className="heading-secondary">{temperature}&#8451;</h1>
       </div>
       <div className="main-window__secondary">
