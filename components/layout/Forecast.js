@@ -1,3 +1,19 @@
+import {
+  WiDaySunny,
+  WiNightClear,
+  WiDaySunnyOvercast,
+  WiNightPartlyCloudy,
+  WiCloud,
+  WiDayCloudy,
+  WiNightCloudy,
+  WiRain,
+  WiDayShowers,
+  WiNightShowers,
+  WiThunderstorm,
+  WiSnow,
+  WiFog,
+} from "react-icons/wi";
+
 export default function Forecast({ fiveHour, iconConverter, timeConverter }) {
   const displayHour = fiveHour.map((hour, index) => {
     return (
@@ -15,14 +31,7 @@ export default function Forecast({ fiveHour, iconConverter, timeConverter }) {
         <h1>Today</h1>
         <h1>Next 7 Days &#62; </h1>
       </div>
-      <div className="forecast__hours">
-        {displayHour}
-        {/* <div className="hour"></div>
-        <div className="hour"></div>
-        <div className="hour"></div>
-        <div className="hour"></div>
-        <div className="hour"></div> */}
-      </div>
+      <div className="forecast__hours">{displayHour}</div>
     </div>
   );
 }
