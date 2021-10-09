@@ -21,7 +21,7 @@ export default function Forecast({ fiveHour, iconConverter, timeConverter }) {
       <div key={index} className="hour">
         <div className="hour__time">{timeConverter(hour.dt)}</div>
         <div className="hour__icon">
-          <WiDaySunny size="2.5rem" />
+          <WiDaySunny fontSize="2.5rem" />
         </div>
         {/* <div className="hour__icon">{iconConverter(hour.weather[0].icon)}</div> */}
         <div className="hour__temp">
@@ -34,8 +34,7 @@ export default function Forecast({ fiveHour, iconConverter, timeConverter }) {
   return (
     <div className="forecast">
       <div className="forecast__header">
-        <h1>Today</h1>
-        <h1>Next 7 Days &#62; </h1>
+        <h1>Next 5 Hours</h1>
       </div>
       <div className="forecast__hours">{displayHour}</div>
     </div>

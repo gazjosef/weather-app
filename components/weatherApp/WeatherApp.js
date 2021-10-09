@@ -76,27 +76,51 @@ export default function App() {
 
   const iconConverter = (icon) => {
     const convertIcon = {
-      "01d": "WiDaySunny",
-      "02d": "WiDaySunnyOvercast",
-      "03d": "WiCloud",
-      "04d": "WiDayCloudy",
-      "09d": "WiRain",
-      "10d": "WiDayShowers",
-      "11d": "WiThunderstorm",
-      "13d": "WiSnow",
-      "50d": "WiFog",
-      "01n": "WiNightClear",
-      "02n": "WiNightPartlyCloudy",
-      "03n": "WiCloud",
-      "04n": "WiNightCloudy",
-      "09n": "WiRain",
-      "10n": "WiNightShowers",
-      "11n": "WiThunderstorm",
-      "13n": "WiSnow",
-      "50n": "WiFog",
+      "01d": "wi-day-sunny",
+      "02d": "wi-day-sunny-overcast",
+      "03d": "wi-cloud",
+      "04d": "wi-day-cloudy",
+      "09d": "wi-rain",
+      "10d": "wi-day-showers",
+      "11d": "wi-thunderstorm",
+      "13d": "wi-snow",
+      "50d": "wi-fog",
+      "01n": "wi-night-cleaer",
+      "02n": "wi-night-partly-cloudy",
+      "03n": "wi-cloud",
+      "04n": "wi-night-cloudy",
+      "09n": "wi-rain",
+      "10n": "wi-night-showers",
+      "11n": "wi-thunderstorm",
+      "13n": "wi-snow",
+      "50n": "wi-fog",
     };
     return convertIcon[icon];
   };
+
+  // const iconConverter = (icon) => {
+  //   const convertIcon = {
+  //     "01d": "WiDaySunny",
+  //     "02d": "WiDaySunnyOvercast",
+  //     "03d": "WiCloud",
+  //     "04d": "WiDayCloudy",
+  //     "09d": "WiRain",
+  //     "10d": "WiDayShowers",
+  //     "11d": "WiThunderstorm",
+  //     "13d": "WiSnow",
+  //     "50d": "WiFog",
+  //     "01n": "WiNightClear",
+  //     "02n": "WiNightPartlyCloudy",
+  //     "03n": "WiCloud",
+  //     "04n": "WiNightCloudy",
+  //     "09n": "WiRain",
+  //     "10n": "WiNightShowers",
+  //     "11n": "WiThunderstorm",
+  //     "13n": "WiSnow",
+  //     "50n": "WiFog",
+  //   };
+  //   return convertIcon[icon];
+  // };
 
   const dateConverter = (UNIX_timestamp) => {
     let a = new Date(UNIX_timestamp * 1000);
