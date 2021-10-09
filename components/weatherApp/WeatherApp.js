@@ -11,7 +11,6 @@ export default function App() {
   const [city, setCity] = useState();
   const [country, setCountry] = useState();
   const [date, setDate] = useState();
-  const [dt, setDT] = useState();
   const [description, setDescription] = useState();
   const [feelslike, setFeelslike] = useState();
   const [humidity, setHumidity] = useState();
@@ -20,7 +19,6 @@ export default function App() {
   const [temperature, setTemperature] = useState(0);
   const [time, setTime] = useState();
   const [wind, setWind] = useState();
-  const [windDegrees, setWindDegrees] = useState();
 
   // Get Five Hour Forecast
   const [fiveHour, setFiveHour] = useState([]);
@@ -39,7 +37,6 @@ export default function App() {
       setCity(data.name);
       setCountry(data.sys.country);
       setDate(dateConverter(data.dt));
-      setDT(data.dt);
       setDescription(data.weather[0].description);
       setFeelslike(data.main.feels_like);
       setHumidity(data.main.humidity);
@@ -48,7 +45,6 @@ export default function App() {
       setTemperature(Math.floor(data.main.temp));
       setTime(timeConverter(data.dt));
       setWind(data.wind.speed);
-      setWindDegrees(data.wind.deg);
     };
     getWeather();
   }, []);
@@ -137,6 +133,11 @@ export default function App() {
     return time;
   };
 
+  // const celciusConverter = (k) => {
+  //   const kelvin = k - 273.15;
+  //   return stringify(kelvin).slice(0, 2);
+  // };
+
   useEffect(() => {
     const getHourForecast = async (e) => {
       const api_call = await fetch(
@@ -145,15 +146,12 @@ export default function App() {
 
       const fiveHourData = await api_call.json();
 
-      console.log("Get Hour Data", fiveHourData.list);
+      console.log("Get Hour Data", fiveHourData.list.slice(0, 5));
 
       setFiveHour(fiveHourData.list.slice(0, 5));
     };
     getHourForecast();
   }, []);
-
-  console.log("setDT", dt);
-  console.log("setFiveHour", fiveHour);
 
   return (
     <div className="screen">
@@ -168,7 +166,6 @@ export default function App() {
           icon={icon}
           description={description}
           date={date}
-          time={time}
           temperature={temperature}
           wind={wind}
           feelslike={feelslike}
@@ -178,6 +175,7 @@ export default function App() {
 
         <Forecast
           fiveHour={fiveHour}
+          celciusConverter={celciusConverter}
           iconConverter={iconConverter}
           timeConverter={timeConverter}
         />
