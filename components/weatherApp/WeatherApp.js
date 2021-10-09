@@ -133,11 +133,6 @@ export default function App() {
     return time;
   };
 
-  // const celciusConverter = (k) => {
-  //   const kelvin = k - 273.15;
-  //   return stringify(kelvin).slice(0, 2);
-  // };
-
   useEffect(() => {
     const getHourForecast = async (e) => {
       const api_call = await fetch(
@@ -175,7 +170,6 @@ export default function App() {
 
         <Forecast
           fiveHour={fiveHour}
-          celciusConverter={celciusConverter}
           iconConverter={iconConverter}
           timeConverter={timeConverter}
         />

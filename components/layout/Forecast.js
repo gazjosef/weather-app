@@ -15,16 +15,7 @@ import {
   WiFog,
 } from "react-icons/wi";
 
-export default function Forecast({
-  celciusConverter,
-  fiveHour,
-  iconConverter,
-  timeConverter,
-}) {
-  // console.log(celciusConverter());
-  // const celciusConverter = ()
-  // const celciusConverter
-
+export default function Forecast({ fiveHour, iconConverter, timeConverter }) {
   const displayHour = fiveHour.map((hour, index) => {
     return (
       <div key={index} className="hour">
