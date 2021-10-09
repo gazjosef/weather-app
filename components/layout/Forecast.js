@@ -1,3 +1,4 @@
+import { stringify } from "json5";
 import {
   WiDaySunny,
   WiNightClear,
@@ -14,13 +15,27 @@ import {
   WiFog,
 } from "react-icons/wi";
 
-export default function Forecast({ fiveHour, iconConverter, timeConverter }) {
+export default function Forecast({
+  celciusConverter,
+  fiveHour,
+  iconConverter,
+  timeConverter,
+}) {
+  // console.log(celciusConverter());
+  // const celciusConverter = ()
+  // const celciusConverter
+
   const displayHour = fiveHour.map((hour, index) => {
     return (
       <div key={index} className="hour">
         <div className="hour__time">{timeConverter(hour.dt)}</div>
-        <div className="hour__icon">{iconConverter(hour.weather[0].icon)}</div>
-        <div className="hour__temp">{hour.main.temp}</div>
+        <div className="hour__icon">
+          <WiDaySunny size="2.5rem" />
+        </div>
+        {/* <div className="hour__icon">{iconConverter(hour.weather[0].icon)}</div> */}
+        <div className="hour__temp">
+          {stringify(hour.main.temp - 273.15).slice(0, 2)}&#8451;
+        </div>
       </div>
     );
   });

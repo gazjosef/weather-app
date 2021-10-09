@@ -20,36 +20,34 @@ import {
   WiSnow,
   WiFog,
 } from "react-icons/wi";
+// import { ReactIcons } from "react-icons/wi";
 
 export default function MainWindow({
   icon,
   description,
   date,
-  // time,
   temperature,
   wind,
   feelslike,
   humidity,
   pressure,
 }) {
-  const newIcon = (prop) => {
-    return `<${prop} />`;
-  };
-
   return (
     <div className="main-window">
+      {/* Main Window */}
       <div className="main-window__main">
-        <WiDaySunny />
+        {/* <h1>{icon}</h1> */}
+        <WiDayCloudy size="8rem" />
 
-        <h1>{icon}</h1>
-        <h1>{description}</h1>
-        <h1 className="heading-main">{date}</h1>
-        <h1 className="heading-secondary">{temperature}&#8451;</h1>
+        <h2 className="heading-secondary">{description}</h2>
+        <h2 className="heading-main">{date}</h2>
+        <h2 className="heading-main">{temperature}&#8451;</h2>
       </div>
+      {/* Secondary Windows */}
       <div className="main-window__secondary">
         <div className="secondary-window">
           <div className="secondary-window__icon">
-            <FaWind />
+            <FaWind size="1.5rem" />
           </div>
           <div className="secondary-window__info">
             <div>Wind</div>
@@ -58,7 +56,7 @@ export default function MainWindow({
         </div>
         <div className="secondary-window">
           <div className="secondary-window__icon">
-            <FaThermometerHalf />
+            <FaThermometerHalf size="1.5rem" />
           </div>
           <div className="secondary-window__info">
             <div>Feels Like</div>
@@ -69,7 +67,7 @@ export default function MainWindow({
       <div className="main-window__secondary">
         <div className="secondary-window">
           <div className="secondary-window__icon">
-            <FaWater />
+            <FaWater size="1.5rem" />
           </div>
           <div className="secondary-window__info">
             <div>Humidity</div>
@@ -78,7 +76,7 @@ export default function MainWindow({
         </div>
         <div className="secondary-window">
           <div className="secondary-window__icon">
-            <FaChartLine />
+            <FaChartLine size="1.5rem" />
           </div>
           <div className="secondary-window__info">
             <div>Pressure</div>

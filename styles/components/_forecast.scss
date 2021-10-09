@@ -19,12 +19,13 @@
     align-items: center;
     justify-content: space-between;
 
+    color: $color-white;
+
     .hour {
-      background-color: lightblue;
+      background-color: $color-blue;
       width: 3.5rem;
       height: 7rem;
       padding: 0.5rem;
-      border: 1px solid $color-black;
       border-radius: 1rem;
 
       display: flex;
@@ -32,7 +33,7 @@
       align-items: center;
       justify-content: space-between;
 
-      font-size: 0.5rem;
+      font-size: 0.75rem;
     }
   }
 }
