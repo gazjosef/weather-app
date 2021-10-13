@@ -26,6 +26,7 @@ export default function App() {
   const [city, setCity] = useState();
   const [country, setCountry] = useState();
   const [date, setDate] = useState();
+  const [degrees, setDegrees] = useState();
   const [description, setDescription] = useState();
   const [feelslike, setFeelslike] = useState();
   const [humidity, setHumidity] = useState();
@@ -52,6 +53,7 @@ export default function App() {
       setCity(data.name);
       setCountry(data.sys.country);
       setDate(dateConverter(data.dt));
+      setDegrees(directionConverter(data.wind.deg));
       setDescription(data.weather[0].description);
       setFeelslike(data.main.feels_like);
       setHumidity(data.main.humidity);
@@ -148,6 +150,18 @@ export default function App() {
     return time;
   };
 
+  const directionConverter = (degrees) => {
+    const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+
+    let direction = (degrees * 8) / 360;
+
+    direction = Math.round(direction, 0);
+
+    direction = (direction + 8) % 8;
+
+    return directions[direction];
+  };
+
   useEffect(() => {
     const getHourForecast = async (e) => {
       const api_call = await fetch(
@@ -176,6 +190,7 @@ export default function App() {
           icon={icon}
           description={description}
           date={date}
+          degrees={degrees}
           temperature={temperature}
           wind={wind}
           feelslike={feelslike}

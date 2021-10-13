@@ -9,6 +9,7 @@ import {
 export default function MainWindow({
   icon,
   description,
+  degrees,
   date,
   temperature,
   wind,
@@ -20,7 +21,7 @@ export default function MainWindow({
     <div className="main-window">
       {/* Main Window */}
       <div className="main-window__main">
-        <IconContext.Provider value={{ size: "8rem" }}>
+        <IconContext.Provider value={{ size: "10em" }}>
           {icon}
         </IconContext.Provider>
 
@@ -36,7 +37,7 @@ export default function MainWindow({
             <FaWind fontSize="1.5rem" />
           </div>
           <div className="secondary-window__info">
-            <div>Wind</div>
+            <div>{degrees} Wind</div>
             <div>{wind} km/h</div>
           </div>
         </div>

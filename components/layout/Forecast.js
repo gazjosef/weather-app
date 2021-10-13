@@ -8,7 +8,7 @@ export default function Forecast({ fiveHour, iconConverter, timeConverter }) {
       <div key={index} className="hour">
         <div className="hour__time">{timeConverter(hour.dt)}</div>
         <div className="hour__icon">
-          <IconContext.Provider value={{ size: "2rem" }}>
+          <IconContext.Provider value={{ size: "2em" }}>
             {iconConverter(hour.weather[0].icon)}
           </IconContext.Provider>
         </div>
