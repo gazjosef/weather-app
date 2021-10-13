@@ -5,21 +5,6 @@ import {
   FaWater,
   FaChartLine,
 } from "react-icons/fa";
-import {
-  WiDaySunny,
-  WiNightClear,
-  WiDaySunnyOvercast,
-  WiNightPartlyCloudy,
-  WiCloud,
-  WiDayCloudy,
-  WiNightCloudy,
-  WiRain,
-  WiDayShowers,
-  WiNightShowers,
-  WiThunderstorm,
-  WiSnow,
-  WiFog,
-} from "react-icons/wi";
 
 export default function MainWindow({
   icon,
@@ -35,7 +20,7 @@ export default function MainWindow({
     <div className="main-window">
       {/* Main Window */}
       <div className="main-window__main">
-        <IconContext.Provider value={{ size: "35rem" }}>
+        <IconContext.Provider value={{ size: "8rem" }}>
           {icon}
         </IconContext.Provider>
 

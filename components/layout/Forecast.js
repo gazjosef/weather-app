@@ -1,25 +1,9 @@
 import { IconContext } from "react-icons";
 
 import { stringify } from "json5";
-import {
-  WiDaySunny,
-  WiNightClear,
-  WiDaySunnyOvercast,
-  WiNightPartlyCloudy,
-  WiCloud,
-  WiDayCloudy,
-  WiNightCloudy,
-  WiRain,
-  WiDayShowers,
-  WiNightShowers,
-  WiThunderstorm,
-  WiSnow,
-  WiFog,
-} from "react-icons/wi";
 
 export default function Forecast({ fiveHour, iconConverter, timeConverter }) {
   const displayHour = fiveHour.map((hour, index) => {
-    // console.log(hour.weather);
     return (
       <div key={index} className="hour">
         <div className="hour__time">{timeConverter(hour.dt)}</div>
