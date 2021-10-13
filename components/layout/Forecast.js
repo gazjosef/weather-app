@@ -1,3 +1,5 @@
+import { IconContext } from "react-icons";
+
 import { stringify } from "json5";
 import {
   WiDaySunny,
@@ -21,7 +23,11 @@ export default function Forecast({ fiveHour, iconConverter, timeConverter }) {
     return (
       <div key={index} className="hour">
         <div className="hour__time">{timeConverter(hour.dt)}</div>
-        <div className="hour__icon">{iconConverter(hour.weather[0].icon)}</div>
+        <div className="hour__icon">
+          <IconContext.Provider value={{ size: "2rem" }}>
+            {iconConverter(hour.weather[0].icon)}
+          </IconContext.Provider>
+        </div>
         <div className="hour__temp">
           {stringify(hour.main.temp - 273.15).slice(0, 2)}&#8451;
         </div>
