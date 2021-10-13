@@ -17,13 +17,11 @@ import {
 
 export default function Forecast({ fiveHour, iconConverter, timeConverter }) {
   const displayHour = fiveHour.map((hour, index) => {
+    // console.log(hour.weather);
     return (
       <div key={index} className="hour">
         <div className="hour__time">{timeConverter(hour.dt)}</div>
-        <div className="hour__icon">
-          <WiDaySunny fontSize="2.5rem" />
-        </div>
-        {/* <div className="hour__icon">{iconConverter(hour.weather[0].icon)}</div> */}
+        <div className="hour__icon">{iconConverter(hour.weather[0].icon)}</div>
         <div className="hour__temp">
           {stringify(hour.main.temp - 273.15).slice(0, 2)}&#8451;
         </div>
