@@ -35,10 +35,13 @@ export default function MainWindow({
     <div className="main-window">
       {/* Main Window */}
       <div className="main-window__main">
-        <h1 fontSize="8rem">{icon}</h1>
+        <IconContext.Provider value={{ size: "35rem" }}>
+          {icon}
+        </IconContext.Provider>
+
         <h2 className="heading-secondary">{description}</h2>
-        <h2 className="heading-main">{date}</h2>
         <h2 className="heading-main">{temperature}&#8451;</h2>
+        <h2 className="heading-secondary  ">{date}</h2>
       </div>
 
       {/* Secondary Windows */}
