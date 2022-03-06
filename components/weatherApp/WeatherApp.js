@@ -15,8 +15,8 @@ import {
   WiFog,
 } from "react-icons/wi";
 
-import MainWindow from "../layout/MainWindow";
-import Forecast from "../layout/Forecast";
+import MainWindow from "../Windows/MainWindow";
+import Forecast from "../Windows/Forecast";
 
 const API_KEY = "4a64ed09d073cdac231c53e1a3b62181";
 
