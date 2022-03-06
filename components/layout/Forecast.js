@@ -1,7 +1,5 @@
 import { IconContext } from "react-icons";
 
-import { stringify } from "json5";
-
 export default function Forecast({ fiveHour, iconConverter, timeConverter }) {
   const displayHour = fiveHour.map((hour, index) => {
     return (
@@ -13,7 +11,7 @@ export default function Forecast({ fiveHour, iconConverter, timeConverter }) {
           </IconContext.Provider>
         </div>
         <div className="hour__temp">
-          {stringify(hour.main.temp - 273.15).slice(0, 2)}&#8451;
+          {JSON.stringify(hour.main.temp - 273.15).slice(0, 2)}&#8451;
         </div>
       </div>
     );
