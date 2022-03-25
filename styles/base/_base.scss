@@ -14,7 +14,10 @@ html {
 
 body {
   box-sizing: border-box;
-  background-color: $color-background;
-  background: linear-gradient(to bottom, #57c1eb 0%, #246fa8 100%);
+  background: linear-gradient(
+    to bottom,
+    $color-blue-200 0%,
+    $color-blue-250 100%
+  );
   background-repeat: no-repeat;
 }
