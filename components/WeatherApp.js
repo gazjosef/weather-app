@@ -25,15 +25,17 @@ export default function App() {
   const [background, setBackground] = useState("sky-gradient-11");
   const [city, setCity] = useState();
   const [country, setCountry] = useState();
+
   const [date, setDate] = useState();
-  const [degrees, setDegrees] = useState();
   const [description, setDescription] = useState();
   const [feelslike, setFeelslike] = useState();
-  const [humidity, setHumidity] = useState();
   const [icon, setIcon] = useState();
-  const [pressure, setPressure] = useState();
   const [temperature, setTemperature] = useState(0);
   const [time, setTime] = useState();
+
+  const [degrees, setDegrees] = useState();
+  const [humidity, setHumidity] = useState();
+  const [pressure, setPressure] = useState();
   const [wind, setWind] = useState();
 
   // Get Five Hour Forecast
