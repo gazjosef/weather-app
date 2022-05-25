@@ -18,7 +18,7 @@ import {
 import MainWindow from "./Windows/MainWindow";
 import Forecast from "./Windows/Forecast";
 
-const API_KEY = "4a64ed09d073cdac231c53e1a3b62181";
+const API_KEY = process.env.NEXT_PUBLIC_OPEN_WEATHER_API_KEY;
 
 export default function App() {
   // Get Weather State
