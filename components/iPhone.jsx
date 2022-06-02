@@ -4,14 +4,12 @@ export default function iPhone() {
   return (
     <>
       <div className="center">
-        {/* iPhone / iPad */}
         <div className="mobile">
           {/* Weather App */}
           <WeatherApp />
 
           <div className="home"></div>
           <div className="inner"></div>
-
           <ul className="volume">
             <li></li>
             <li></li>
