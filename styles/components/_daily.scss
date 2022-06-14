@@ -23,7 +23,9 @@
       width: 3.5rem;
       height: 7rem;
       padding: 0.5rem;
+      border: 0.5px solid $color-black;
       border-radius: 1rem;
+      overflow: hidden;
 
       display: flex;
       flex-direction: column;

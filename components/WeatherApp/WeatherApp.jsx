@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { IconContext } from "react-icons";
+import { FaSearch } from "react-icons/fa";
 import {
   WiDaySunny,
   WiNightClear,
@@ -22,8 +24,8 @@ const API_KEY = process.env.NEXT_PUBLIC_OPEN_WEATHER_API_KEY;
 
 export default function App() {
   // Get Current Forecast
-  const [city, setCity] = useState();
-  const [country, setCountry] = useState();
+  const [city, setCity] = useState("sydney");
+  const [country, setCountry] = useState("au");
 
   const [date, setDate] = useState();
   const [description, setDescription] = useState();
@@ -41,13 +43,15 @@ export default function App() {
   const [fiveHour, setFiveHour] = useState([]);
 
   useEffect(() => {
-    const getWeather = async (e) => {
+    const setWeather = async (e) => {
+      // e.preventDefault();
       const api_call = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=sydney,au&appid=${API_KEY}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`
       );
       const data = await api_call.json();
 
       console.log("Get Weather Data", data);
+      console.log("clicked");
 
       setCity(data.name);
       setCountry(data.sys.country);
@@ -62,7 +66,7 @@ export default function App() {
       setTime(timeConverter(data.dt));
       setWind(data.wind.speed);
     };
-    getWeather();
+    setWeather();
   }, []);
 
   const iconConverter = (icon) => {
@@ -101,7 +105,7 @@ export default function App() {
   };
 
   useEffect(() => {
-    const getHourForecast = async (e) => {
+    const setHourForecast = async (e) => {
       const api_call = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?q=sydney,nsw&appid=${API_KEY}`
       );
@@ -110,13 +114,57 @@ export default function App() {
 
       setFiveHour(fiveHourData.list.slice(0, 5));
     };
-    getHourForecast();
+    setHourForecast();
   }, []);
+
+  const getWeather = async (e) => {
+    e.preventDefault();
+
+    const city = e.target.elements.city.value;
+    const country = e.target.elements.country.value;
+
+    const api_call = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`
+    );
+    const data = await api_call.json();
+
+    console.log("Get Weather Data", data);
+    console.log("clicked");
+
+    setCity(data.name);
+    setCountry(data.sys.country);
+    setDate(data.dt);
+    setDegrees(data.wind.deg);
+    setDescription(data.weather[0].description);
+    setFeelslike(data.main.feels_like);
+    setHumidity(data.main.humidity);
+    setIcon(iconConverter(data.weather[0].icon));
+    setPressure(data.main.pressure);
+    setTemperature(Math.floor(data.main.temp));
+    setTime(timeConverter(data.dt));
+    setWind(data.wind.speed);
+
+    const api_call2 = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&appid=${API_KEY}`
+    );
+    const fiveHourData = await api_call2.json();
+    console.log("Get Hour Data", fiveHourData.list.slice(0, 5));
+
+    setFiveHour(fiveHourData.list.slice(0, 5));
+  };
 
   return (
     <div className="screen">
       <div className="weather-app">
-        <div className="weather-app__title"></div>
+        <form onSubmit={getWeather} className="weather-app__title">
+          <input type="text" name="city" placeholder="E.g Sydney.." />
+          <input type="text" name="country" placeholder="E.g AU.." />
+          <button type="submit">
+            <IconContext.Provider value={{ className: "search-icon" }}>
+              <FaSearch />
+            </IconContext.Provider>
+          </button>
+        </form>
 
         <Current
           city={city}
