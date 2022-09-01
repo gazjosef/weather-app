@@ -1,22 +1,3 @@
-
-## How to use
-
-Set City && Country Code to view current and upcoming forecast.
-
-## Built-With
-
-- ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-- ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
-- ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
-
-## GitHub Page
-
-https://weather-app-gazjosef.vercel.app/
-
-## Author
-Gareth Hind
-
-
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 <!--
@@ -89,12 +70,22 @@ A weather app forecasting the current weather temperature as well as the next fi
 <!-- GETTING STARTED -->
 ## Getting Started
 
+### Prerequisites
+
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
 ### Installation
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/gazjosef/blackjack-game.git
+   git clone https://github.com/gazjosef/weather-app.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -104,10 +95,7 @@ A weather app forecasting the current weather temperature as well as the next fi
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-1. Choose betting wager
-2. Click deal.
-3. Choose between Hit, Stand, and Double
-4. Winner is decided between Player value and Dealer value
+1. Enter City && Country Code. Click the find button.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -116,8 +104,7 @@ A weather app forecasting the current weather temperature as well as the next fi
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Deal cards to multiple player boxes
-- [ ] Allow player to split hand into two boxes when their initial hand contains a pair
+- [ ] 
 
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
@@ -131,9 +118,9 @@ See the [open issues](https://github.com/github_username/repo_name/issues) for a
 
 Gareth Hind - garethjhind@gmail.com
 
-Project Link: [https://github.com/gazjosef/blackjack-game](https://github.com/gazjosef/blackjack-game)
+Project Link: [https://github.com/gazjosef/weather-app](https://github.com/gazjosef/weather-app)
 
-GitPage: https://gazjosef.github.io/blackjack-game/
+Vercel: [https://gazjosef.github.io/blackjack-game/](https://weather-app-gazjosef.vercel.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
