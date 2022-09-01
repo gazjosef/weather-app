@@ -1,8 +1,3 @@
-# Weather App
-
-## Description
-
-A weather app forecasting the current weather temperature as well as the next five hours.
 
 ## How to use
 
@@ -38,14 +33,14 @@ Gareth Hind
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/gazjosef/blackjack-game">
+  <a href="https://github.com/gazjosef/weather-app">
     <img src="/public/favicon_io/android-chrome-512x512.png" alt="Logo" width="250" height="250">
   </a>
 
-<h3 align="center">BlackJack</h3>
+<h3 align="center">Weather App</h3>
 
   <p align="center">
-Simple Blackjack game built with HTML, CSS, and JavaScript.
+A weather app forecasting the current weather temperature as well as the next five hours.
     <br />
   </p>
 </div>
@@ -82,7 +77,8 @@ Simple Blackjack game built with HTML, CSS, and JavaScript.
 
 ### Built With
 
-* ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+* ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+* ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 * ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 
 
