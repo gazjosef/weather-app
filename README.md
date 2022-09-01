@@ -95,7 +95,8 @@ A weather app forecasting the current weather temperature as well as the next fi
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-1. Enter City && Country Code. Click the find button.
+1. Enter City && Country Code. 
+2. Click the find button.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -107,7 +108,7 @@ A weather app forecasting the current weather temperature as well as the next fi
 - [ ] 
 
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+<!-- See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues). -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
