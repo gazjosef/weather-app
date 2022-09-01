@@ -120,7 +120,7 @@ Gareth Hind - garethjhind@gmail.com
 
 Project Link: [https://github.com/gazjosef/weather-app](https://github.com/gazjosef/weather-app)
 
-Vercel: [https://gazjosef.github.io/blackjack-game/](https://weather-app-gazjosef.vercel.app/)
+Vercel: [https://weather-app-gazjosef.vercel.app/](https://weather-app-gazjosef.vercel.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
