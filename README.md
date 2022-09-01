@@ -116,11 +116,12 @@ See the [open issues](https://github.com/github_username/repo_name/issues) for a
 <!-- CONTACT -->
 ## Contact
 
-Gareth Hind - garethjhind@gmail.com
+
+Live: [https://weather-app-gazjosef.vercel.app/](https://weather-app-gazjosef.vercel.app/)
 
 Project Link: [https://github.com/gazjosef/weather-app](https://github.com/gazjosef/weather-app)
 
-Vercel: [https://weather-app-gazjosef.vercel.app/](https://weather-app-gazjosef.vercel.app/)
+Gareth Hind - garethjhind@gmail.com
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
