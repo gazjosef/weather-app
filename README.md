@@ -105,9 +105,9 @@ A weather app forecasting the current weather temperature as well as the next fi
 <!-- ROADMAP -->
 ## Roadmap
 
-- [✅] Show current temperature
-- [✅] Change city
-- [✅] Show next five hour forecast
+- ☑ Show current temperature
+- ☑ Change city
+- ☑ Show next five hour forecast
 - [ ] Show next seven day forecast
 
 <!-- See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues). -->
