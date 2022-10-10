@@ -10,8 +10,9 @@ Set City && Country Code to view current and upcoming forecast.
 
 ## Built-With
 
-- React
+- TypeScript
 - NextJs
+- React
 - SASS
 
 ## GitHub Page
@@ -19,4 +20,5 @@ Set City && Country Code to view current and upcoming forecast.
 https://weather-app-gazjosef.vercel.app/
 
 ## Author
+
 Gareth Hind
