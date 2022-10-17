@@ -114,6 +114,7 @@ A weather app forecasting the current weather temperature as well as the next fi
 - [x] Change city
 - [x] Show next five hour forecast
 - [ ] Show next seven day forecast
+- [ ] Refactor to TypeScript
 
 <!-- See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues). -->
 
