@@ -55,8 +55,6 @@ A weather app forecasting the current weather temperature as well as the next fi
 ## About The Project
 
 
-[![Product Name Screen Shot][product-screenshot]]([https://github.com/gazjosef/portfolio-nextjs/blob/main/public/images/posts/WeatherApp.png](https://github.com/gazjosef/portfolio-nextjs/blob/main/public/images/posts/WeatherApp.png))
-
 A mobile friendly weather app using the the Open Weather API. 
 
 The app displays the current temperature plus a forecast of the next five hours. 
