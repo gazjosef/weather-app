@@ -57,7 +57,13 @@ A weather app forecasting the current weather temperature as well as the next fi
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-A mobile friendly weather app using the the Open Weather API. The layout design is styled with SASS and the app is written in TypeScript. The app displays the current temperature plus a forecast of the next five hours. The app is tested with Cypress.
+A mobile friendly weather app using the the Open Weather API. 
+
+The app displays the current temperature plus a forecast of the next five hours. 
+
+The layout design is styled with SASS and the app is written in TypeScript. 
+
+The app is tested with Cypress.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
