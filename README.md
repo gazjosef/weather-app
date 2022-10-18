@@ -55,7 +55,7 @@ A weather app forecasting the current weather temperature as well as the next fi
 ## About The Project
 
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]]([https://example.com](https://github.com/gazjosef/portfolio-nextjs/blob/main/public/images/posts/WeatherApp.png))
 
 A mobile friendly weather app using the the Open Weather API. 
 
@@ -63,7 +63,7 @@ The app displays the current temperature plus a forecast of the next five hours.
 
 The layout design is styled with SASS and the app is written in TypeScript. 
 
-The app is tested with Cypress.
+Unit testing with Cypress.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
