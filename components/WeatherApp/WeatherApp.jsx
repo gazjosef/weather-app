@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { IconContext } from "react-icons";
 import { FaSearch } from "react-icons/fa";
 import {
@@ -27,17 +27,8 @@ export default function App() {
   const [city, setCity] = useState("sydney");
   const [country, setCountry] = useState("au");
 
-  const [date, setDate] = useState();
-  const [description, setDescription] = useState();
-  const [feelslike, setFeelslike] = useState();
-  const [icon, setIcon] = useState();
-  const [temperature, setTemperature] = useState(null);
-  const [time, setTime] = useState();
-
-  const [degrees, setDegrees] = useState();
-  const [humidity, setHumidity] = useState();
-  const [pressure, setPressure] = useState();
-  const [wind, setWind] = useState();
+  const [data, setData] = useState({});
+  const [arrive, setArrive] = useState(false);
 
   // Get Daily Forecast
   const [fiveHour, setFiveHour] = useState([]);
@@ -50,20 +41,13 @@ export default function App() {
       );
       const data = await api_call.json();
 
+      setData(data);
+      setArrive(true);
+
       console.log("Get Weather Data", data);
 
       setCity(data.name);
       setCountry(data.sys.country);
-      setDate(data.dt);
-      setDegrees(data.wind.deg);
-      setDescription(data.weather[0].description);
-      setFeelslike(data.main.feels_like);
-      setHumidity(data.main.humidity);
-      setIcon(iconConverter(data.weather[0].icon));
-      setPressure(data.main.pressure);
-      setTemperature(Math.floor(data.main.temp));
-      setTime(timeConverter(data.dt));
-      setWind(data.wind.speed);
     };
     setWeather();
   }, []);
@@ -130,18 +114,10 @@ export default function App() {
     console.log("Get Weather Data", data);
     console.log("clicked");
 
+    setData(data);
+
     setCity(data.name);
     setCountry(data.sys.country);
-    setDate(data.dt);
-    setDegrees(data.wind.deg);
-    setDescription(data.weather[0].description);
-    setFeelslike(data.main.feels_like);
-    setHumidity(data.main.humidity);
-    setIcon(iconConverter(data.weather[0].icon));
-    setPressure(data.main.pressure);
-    setTemperature(Math.floor(data.main.temp));
-    setTime(timeConverter(data.dt));
-    setWind(data.wind.speed);
 
     const api_call2 = await fetch(
       `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&appid=${API_KEY}`
@@ -165,19 +141,21 @@ export default function App() {
           </button>
         </form>
 
-        <Current
-          city={city}
-          country={country}
-          icon={icon}
-          description={description}
-          date={date}
-          degrees={degrees}
-          temperature={temperature}
-          wind={wind}
-          feelslike={feelslike}
-          humidity={humidity}
-          pressure={pressure}
-        />
+        {arrive && (
+          <Current
+            city={city}
+            country={country}
+            icon={iconConverter(data.weather[0].icon)}
+            description={data.weather[0].description}
+            date={data.dt}
+            degrees={data.wind.deg}
+            temperature={Math.floor(data.main.temp)}
+            wind={data.wind.speed}
+            feelslike={data.main.feels_like}
+            humidity={data.main.humidity}
+            pressure={data.main.pressure}
+          />
+        )}
 
         <Daily
           fiveHour={fiveHour}
