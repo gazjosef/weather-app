@@ -31,7 +31,7 @@ export default function App() {
   const [description, setDescription] = useState();
   const [feelslike, setFeelslike] = useState();
   const [icon, setIcon] = useState();
-  const [temperature, setTemperature] = useState(0);
+  const [temperature, setTemperature] = useState(null);
   const [time, setTime] = useState();
 
   const [degrees, setDegrees] = useState();
@@ -51,7 +51,6 @@ export default function App() {
       const data = await api_call.json();
 
       console.log("Get Weather Data", data);
-      console.log("clicked");
 
       setCity(data.name);
       setCountry(data.sys.country);
