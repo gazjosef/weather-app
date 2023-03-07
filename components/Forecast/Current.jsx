@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { IconContext } from "react-icons";
 import {
   FaWind,
@@ -5,45 +6,21 @@ import {
   FaWater,
   FaChartLine,
 } from "react-icons/fa";
+import { iconConverter } from "../iconConverter";
 
-export default function Current({
-  time,
-  date2,
-  city,
-  country,
-  icon,
-  date,
-  description,
-  feelslike,
-  temperature,
-  degrees,
-  wind,
-  humidity,
-  pressure,
-}) {
-  const dateConverter = (UNIX_timestamp) => {
-    let a = new Date(UNIX_timestamp * 1000);
-    const months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
-    let year = a.getFullYear();
-    let month = months[a.getMonth()];
-    let day = a.getDate();
-    let date = day + " " + month + " " + year;
+const Current = ({ currentForecast, city, country }) => {
+  const [time, setTime] = useState();
 
-    return date;
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(Date.now());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentDate = new Date(time);
+  const options = { month: "long", day: "numeric" };
 
   const directionConverter = (degrees) => {
     const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
@@ -56,76 +33,80 @@ export default function Current({
   };
 
   return (
-    <article className="current">
-      {/* Main Window */}
-      <section className="current__main">
-        <div className="main__time">
-          <IconContext.Provider value={{ className: "main__icon" }}>
-            {icon}
+    <div className="current | bg-sky-500 h-[250px] w-full border-solid rounded-[10px] overflow-hidden | text-slate-50">
+      {/* MAIN WINDOW */}
+      <section className="h-[170px] p-[15px] | grid grid-cols-2	">
+        <div>
+          <IconContext.Provider
+            value={{
+              className: "font-semibold	text-[100px] text-white",
+            }}
+          >
+            {iconConverter(currentForecast.weather[0].icon)}
           </IconContext.Provider>
 
-          <span>
-            <h2>
+          <span className="text-center uppercase">
+            <h2 className="font-semibold	text-[14px] text text-center">
               {city}, {country}
             </h2>
           </span>
         </div>
 
-        <div className="main__description">
-          <h2>
-            {time}
-            <br />
-            {date2}
-            <br />
-          </h2>
-          <span>
-            <h2>{temperature}&#8451;</h2>
+        <div className="flex flex-col items-center justify-center | text-[14px] text-center">
+          <h2>{time && currentDate.toLocaleTimeString()}</h2>
+          <h2>{time && currentDate.toLocaleDateString(undefined, options)}</h2>
+          <span className="text-[25px]">
+            <h2>{Math.floor(currentForecast.main.temp)}&#8451;</h2>
           </span>
-          <h2>{description}</h2>
+          <h2>{currentForecast.weather[0].description}</h2>
         </div>
       </section>
-
-      {/* Secondary Windows */}
-      <section className="current__secondary">
-        <section className="secondary">
-          <div className="secondary__icon">
+      {/* SECONDARY WINDOW */}
+      <section className="h-[40px] border-t-[1px] border-solid | flex">
+        <section className="w-full | flex items-center justify-center">
+          <div className="mr-[15px]">
             <FaWind fontSize="1.5rem" />
           </div>
-          <div className="secondary__info">
-            <div>{directionConverter(degrees)} Wind</div>
-            <div>{wind} km/h</div>
+          <div>
+            <div>{directionConverter(currentForecast.wind.deg)} Wind</div>
+            <div>{currentForecast.wind.speed} km/h</div>
           </div>
         </section>
-        <section className="secondary">
-          <section className="secondary__icon">
+
+        <section className="w-full | flex items-center justify-center">
+          <section className="mr-[15px]">
             <FaThermometerHalf fontSize="1.5rem" />
           </section>
-          <div className="secondary__info">
+          <div>
             <div>Feels Like</div>
-            <div>{feelslike}&#8451;</div>
+            <div>{currentForecast.main.feels_like}&#8451;</div>
           </div>
         </section>
       </section>
-      <section className="current__secondary">
-        <section className="secondary">
-          <div className="secondary__icon">
+
+      <section className="h-[40px] border-t-[1px] border-solid | flex">
+        <section className="w-full | flex items-center justify-center">
+          <div className="mr-[15px]">
             <FaWater fontSize="1.5rem" />
           </div>
-          <div className="secondary__info">
+          <div>
             <div>Humidity</div>
-            <div>{humidity} %</div>
+            <div>{currentForecast.main.humidity} %</div>
           </div>
         </section>
-        <section className="secondary">
-          <div className="secondary__icon">
+
+        <section className="w-full | flex items-center justify-center">
+          <div className="mr-[15px]">
             <FaChartLine fontSize="1.5rem" />
           </div>
-          <div className="secondary__info">
+          <div>
             <div>Pressure</div>
-            <div>{pressure} hPa</div>
+            <div>{currentForecast.main.pressure} hPa</div>
           </div>
         </section>
       </section>
-    </article>
+    </div>
   );
-}
+};
+
+export default Current;
