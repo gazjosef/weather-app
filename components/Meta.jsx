@@ -27,9 +27,7 @@ export const Meta = ({ title, keywords, description }) => {
         href="/favicon_io/favicon-16x16.png"
       />
       <link rel="manifest" href="/site.webmanifest" />
-
       <link rel="preconnect" href="https://fonts.gstatic.com" />
-
       <link
         rel="preconnect"
         href="https://fonts.googleapis.com"
@@ -42,7 +40,9 @@ export const Meta = ({ title, keywords, description }) => {
 };
 
 Meta.defaultProps = {
-  title: "Weather App | Web Developer",
-  keywords: "web design, web development",
-  description: "Description",
+  title: "Weather App",
+  keywords:
+    "Weather forecast, Current weather, Local weather, Weather updates, Weather conditions, Temperature, Precipitation, Wind speed, Humidity, Hourly forecast",
+  description:
+    "This weather app provides users with up-to-date information on current and future weather conditions for their location or other locations of interest.",
 };

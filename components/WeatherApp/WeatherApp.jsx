@@ -26,12 +26,67 @@ export default function App() {
   // Get Current Forecast
   const [city, setCity] = useState("sydney");
   const [country, setCountry] = useState("au");
+  const [time, setTime] = useState(new Date());
 
-  const [data, setData] = useState({});
-  const [arrive, setArrive] = useState(false);
+  // const [data, setData] = useState({});
+  const [data, setData] = useState({
+    base: "stations",
+    clouds: {
+      all: null,
+    },
+    cod: null,
+    coord: {
+      lon: null,
+      lat: null,
+    },
+    dt: null,
+    id: null,
+    main: {
+      feels_like: null,
+      humidity: null,
+      pressure: null,
+      temp: null,
+      temp_min: null,
+      temp_max: null,
+    },
+    name: null,
+    rain: {
+      // 1h: 0.22
+    },
+    sys: {
+      type: null,
+      id: null,
+      country: null,
+      sunrise: null,
+      sunset: null,
+    },
+    timezone: null,
+    visibility: null,
+    weather: [
+      {
+        description: null,
+        icon: null,
+        id: null,
+        main: null,
+      },
+    ],
+    wind: {
+      speed: null,
+      deg: null,
+      gust: null,
+    },
+  });
 
   // Get Daily Forecast
   const [fiveHour, setFiveHour] = useState([]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const setWeather = async (e) => {
@@ -42,14 +97,26 @@ export default function App() {
       const data = await api_call.json();
 
       setData(data);
-      setArrive(true);
-
-      console.log("Get Weather Data", data);
-
       setCity(data.name);
       setCountry(data.sys.country);
+
+      console.log("Get Weather Data", data);
+      console.log("Get Time", time);
     };
     setWeather();
+  }, []);
+
+  useEffect(() => {
+    const setHourForecast = async (e) => {
+      const api_call = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?q=sydney,nsw&appid=${API_KEY}`
+      );
+      const fiveHourData = await api_call.json();
+      console.log("Get Hour Data", fiveHourData.list.slice(0, 5));
+
+      setFiveHour(fiveHourData.list.slice(0, 5));
+    };
+    setHourForecast();
   }, []);
 
   const iconConverter = (icon) => {
@@ -76,29 +143,16 @@ export default function App() {
     return convertIcon[icon];
   };
 
-  const timeConverter = (UNIX_timestamp) => {
-    let a = new Date(UNIX_timestamp * 1000);
+  // const timeConverter = (UNIX_timestamp) => {
+  //   let a = new Date(UNIX_timestamp * 1000);
 
-    let hour = a.getHours();
-    let min = ("0" + a.getMinutes()).slice(-2);
-    // let sec = a.getSeconds();
-    let time = hour + ":" + min;
+  //   let hour = a.getHours();
+  //   let min = ("0" + a.getMinutes()).slice(-2);
+  //   // let sec = a.getSeconds();
+  //   let time = hour + ":" + min;
 
-    return time;
-  };
-
-  useEffect(() => {
-    const setHourForecast = async (e) => {
-      const api_call = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=sydney,nsw&appid=${API_KEY}`
-      );
-      const fiveHourData = await api_call.json();
-      console.log("Get Hour Data", fiveHourData.list.slice(0, 5));
-
-      setFiveHour(fiveHourData.list.slice(0, 5));
-    };
-    setHourForecast();
-  }, []);
+  //   return time;
+  // };
 
   const getWeather = async (e) => {
     e.preventDefault();
@@ -128,6 +182,8 @@ export default function App() {
     setFiveHour(fiveHourData.list.slice(0, 5));
   };
 
+  const options = { month: "long", day: "numeric" };
+
   return (
     <div className="screen">
       <div className="weather-app">
@@ -141,26 +197,26 @@ export default function App() {
           </button>
         </form>
 
-        {arrive && (
-          <Current
-            city={city}
-            country={country}
-            icon={iconConverter(data.weather[0].icon)}
-            description={data.weather[0].description}
-            date={data.dt}
-            degrees={data.wind.deg}
-            temperature={Math.floor(data.main.temp)}
-            wind={data.wind.speed}
-            feelslike={data.main.feels_like}
-            humidity={data.main.humidity}
-            pressure={data.main.pressure}
-          />
-        )}
+        <Current
+          icon={iconConverter(data.weather[0].icon)}
+          city={city}
+          country={country}
+          time={time.toLocaleTimeString()}
+          date2={time.toLocaleDateString(undefined, options)}
+          temperature={Math.floor(data.main.temp)}
+          description={data.weather[0].description}
+          degrees={data.wind.deg}
+          wind={data.wind.speed}
+          feelslike={data.main.feels_like}
+          humidity={data.main.humidity}
+          pressure={data.main.pressure}
+        />
 
         <Daily
           fiveHour={fiveHour}
           iconConverter={iconConverter}
-          timeConverter={timeConverter}
+          // time={time.toLocaleTimeString()}
+          // timeConverter={timeConverter}
         />
       </div>
     </div>

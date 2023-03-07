@@ -7,11 +7,12 @@ import {
 } from "react-icons/fa";
 
 export default function Current({
+  time,
+  date2,
   city,
   country,
   icon,
   date,
-  time,
   description,
   feelslike,
   temperature,
@@ -72,8 +73,10 @@ export default function Current({
 
         <div className="main__description">
           <h2>
-            {dateConverter(date)}
             {time}
+            <br />
+            {date2}
+            <br />
           </h2>
           <span>
             <h2>{temperature}&#8451;</h2>

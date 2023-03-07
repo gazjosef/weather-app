@@ -1,6 +1,18 @@
 import { IconContext } from "react-icons";
 
-export default function Daily({ fiveHour, iconConverter, timeConverter }) {
+export default function Daily({ fiveHour, iconConverter }) {
+  const timeConverter = (UNIX_timestamp) => {
+    let a = new Date(UNIX_timestamp * 1000);
+
+    let hour = a.getHours();
+    let min = ("0" + a.getMinutes()).slice(-2);
+    // let sec = a.getSeconds();
+    let time = hour + ":" + min;
+
+    return time;
+  };
+
+  // DISPLAY FUTURE DATA
   const displayHour = fiveHour.map((hour, index) => {
     return (
       <div key={index} className="hour">
