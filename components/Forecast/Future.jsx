@@ -32,7 +32,7 @@ const Future = ({ futureForecast }) => {
   return (
     <div className="h-[100px] w-full | flex flex-col justify-between">
       <div className="daily__header | ">
-        <h1>Next 5 Hours</h1>
+        <h1>Hourly Forecast</h1>
       </div>
       <div className="daily__hours | flex items-center justify-between">
         {displayHour}
