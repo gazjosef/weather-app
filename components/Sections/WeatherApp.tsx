@@ -100,7 +100,6 @@ const WeatherApp: React.FC = () => {
   const [country, setCountry] = useState<string>("au");
   const API_KEY: string = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
 
-  //* Fetch Weather
   useEffect(() => {
     async function fetchWeather(): Promise<void> {
       try {
@@ -116,7 +115,6 @@ const WeatherApp: React.FC = () => {
     fetchWeather();
   }, [city, country, API_KEY]);
 
-  //* Fetch Upcoming Weather
   useEffect(() => {
     async function fetchUpcomingWeather(): Promise<void> {
       try {
@@ -129,7 +127,7 @@ const WeatherApp: React.FC = () => {
           setUpcomingData(responseArr.slice(0, 5));
         }
       } catch (error) {
-        console.error("Error fetching weather data:", error);
+        console.error("Error fetching upcoming weather data:", error);
       }
     }
 
