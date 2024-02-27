@@ -1,8 +1,3 @@
-// import {
-//   useEffect,
-//   useRef,
-//   useState,
-// } from "react";
 // ** Import Icons
 import { IconContext } from "react-icons";
 import {
@@ -22,22 +17,9 @@ interface CurrentProps {
 }
 
 const Current: React.FC<CurrentProps> = ({ weatherData, city, country }) => {
-  // TODO : TIME
   const currentTime = Date.now();
-  // const [currentTime, setCurrentTime] = useState<number>(Date.now());
-  // const intervalRef = useRef<number>();
-
-  // useEffect(() => {
-  //   intervalRef.current = window.setInterval(() => {
-  //     setCurrentTime(Date.now());
-  //   }, 1000);
-
-  //   return () => {
-  //     clearInterval(intervalRef.current);
-  //   };
-  // }, []);
-
   const currentDate = new Date(currentTime ?? 0);
+
   const options: Intl.DateTimeFormatOptions = {
     month: "long",
     day: "numeric",
@@ -70,6 +52,7 @@ const Current: React.FC<CurrentProps> = ({ weatherData, city, country }) => {
           >
             {iconConverter(weatherData.weather[0].icon)}
           </IconContext.Provider>
+
           <span className="text-center uppercase">
             <h2 className="font-semibold	text-[14px] text text-center">
               {city}, {country}
@@ -79,9 +62,11 @@ const Current: React.FC<CurrentProps> = ({ weatherData, city, country }) => {
 
         <div className="flex flex-col gap-1 items-center justify-center | text-[14px] text-center">
           <h2>{currentDate.toLocaleDateString(undefined, options)}</h2>
+
           <span className="text-[25px]">
             <h2>{Math.floor(weatherData.main.temp)}&#8451;</h2>
           </span>
+
           <h2>{weatherData.weather[0].description}</h2>
         </div>
       </section>
