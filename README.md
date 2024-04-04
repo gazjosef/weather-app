@@ -87,11 +87,11 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-- [![Vite][Vite.js]][Vite-url]
-- [![TypeScript][TypeScript.js]][TypeScript-url]
+- [![Vite][Vite.com]][Vite-url]
+- [![TypeScript][TypeScript.com]][TypeScript-url]
 - [![React][React.js]][React-url]
-- [![TailwindCSS][TailwindCSS.js]][TailwindCSS-url]
-- [![Cypress][Cypress.js]][Cypress-url]
+- [![TailwindCSS][TailwindCSS.com]][TailwindCSS-url]
+- [![Cypress][Cypress.com]][Cypress-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
