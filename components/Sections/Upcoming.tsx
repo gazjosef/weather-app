@@ -1,11 +1,11 @@
 import React from "react";
-import { WeatherEntry } from "./WeatherApp";
+import { UpcomingData, WeatherEntry } from "./WeatherApp";
 // ** Import Icons
 import { IconContext } from "react-icons";
 import { iconConverter } from "../Snippets/iconConverter.tsx";
 
 interface UpcomingProps {
-  upcomingData: WeatherEntry[] | null;
+  upcomingData: UpcomingData | null;
 }
 
 const Upcoming: React.FC<UpcomingProps> = ({ upcomingData }) => {
@@ -21,7 +21,7 @@ const Upcoming: React.FC<UpcomingProps> = ({ upcomingData }) => {
 
   // DISPLAY FUTURE DATA
   const displayHour = upcomingData
-    ? upcomingData.map((entry: WeatherEntry) => {
+    ? upcomingData.list.map((entry: WeatherEntry) => {
         return (
           <div
             key={entry.dt}
