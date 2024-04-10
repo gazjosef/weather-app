@@ -140,7 +140,7 @@ const WeatherApp: React.FC = () => {
 
       <Current weatherData={weatherData} city={city} country={country} />
 
-      <Upcoming upcomingData={upcomingData ? upcomingData[0] : null} />
+      <Upcoming upcomingData={upcomingData} />
     </div>
   );
 };
