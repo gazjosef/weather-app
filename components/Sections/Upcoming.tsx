@@ -1,5 +1,5 @@
 import React from "react";
-import { UpcomingData, WeatherEntry } from "./WeatherApp";
+import { UpcomingData } from "./WeatherApp";
 // ** Import Icons
 import { IconContext } from "react-icons";
 import { iconConverter } from "../Snippets/iconConverter.tsx";
