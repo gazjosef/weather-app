@@ -6,6 +6,8 @@ import {
   FaWater,
   FaChartLine,
 } from "react-icons/fa";
+import SpinnerSvg from "../../public/spinner/Spinner@1x-1.0s-200px-200px.svg"; // Import the SVG file
+
 // ** Import Shared Components
 import { WeatherData } from "./WeatherApp";
 import { iconConverter } from "../Snippets/iconConverter.tsx";
@@ -36,9 +38,12 @@ const Current: React.FC<CurrentProps> = ({ weatherData, city, country }) => {
   };
 
   if (!weatherData) {
-    return <div>Loading...</div>;
-  } else {
-    // console.log("weatherData", weatherData);
+    return (
+      <div>
+        <img src={SpinnerSvg} alt="Loading..." />
+        <p>Loading...</p>
+      </div>
+    );
   }
 
   return (

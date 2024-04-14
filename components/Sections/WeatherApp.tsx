@@ -51,47 +51,9 @@ export interface WeatherData {
   };
 }
 
-export interface UpcomingData {
-  dt: number;
-  main: {
-    temp: number;
-    feels_like: number;
-    temp_min: number;
-    temp_max: number;
-    pressure: number;
-    sea_level: number;
-    grnd_level: number;
-    humidity: number;
-    temp_kf: number;
-  };
-  weather: {
-    id: number;
-    main: string;
-    description: string;
-    icon: string;
-  }[];
-  clouds: {
-    all: number;
-  };
-  wind: {
-    speed: number;
-    deg: number;
-    gust: number;
-  };
-  visibility: number;
-  pop: number;
-  rain?: {
-    "3h": number;
-  };
-  sys: {
-    pod: string;
-  };
-  dt_txt: string;
-}
-
 const WeatherApp: React.FC = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-  const [upcomingData, setUpcomingData] = useState<UpcomingData[] | null>(null);
+  const [upcomingData, setUpcomingData] = useState<WeatherData[] | null>(null);
   const [city, setCity] = useState<string>("sydney");
   const [country, setCountry] = useState<string>("au");
   const API_KEY: string = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
