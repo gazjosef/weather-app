@@ -136,8 +136,9 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 - [x] Display temperature, location, and date.
 - [x] Display wind speed, feels like, humidity, and pressure.
-- [x] Add Search Field
-- [x] Refactor to TypeScript
+- [x] Display upcoming temperature.
+- [x] Add search fields.
+- [x] Refactor to TypeScript.
 
 See the [open issues](https://github.com/gazjosef/weather-app/issues) for a full list of proposed features (and known issues).
 
