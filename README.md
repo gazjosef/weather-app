@@ -139,6 +139,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [x] Display upcoming temperature.
 - [x] Add search fields.
 - [x] Refactor to TypeScript.
+- [ ] Unit & E2E testing.
 
 See the [open issues](https://github.com/gazjosef/weather-app/issues) for a full list of proposed features (and known issues).
 
