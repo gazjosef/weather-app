@@ -19,9 +19,17 @@ interface CurrentProps {
 }
 
 const Current: React.FC<CurrentProps> = ({ weatherData, city, country }) => {
+  if (!weatherData) {
+    return (
+      <div>
+        <img src={Spinner} alt="Loading..." />
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
   const currentTime = Date.now();
   const currentDate = new Date(currentTime ?? 0);
-
   const options: Intl.DateTimeFormatOptions = {
     month: "long",
     day: "numeric",
@@ -36,15 +44,6 @@ const Current: React.FC<CurrentProps> = ({ weatherData, city, country }) => {
 
     return directions[direction];
   };
-
-  if (!weatherData) {
-    return (
-      <div>
-        <img src={Spinner} alt="Loading..." />
-        <p>Loading...</p>
-      </div>
-    );
-  }
 
   return (
     <div className="current | bg-sky-500 h-[250px] w-full border-solid rounded-[10px] overflow-hidden | text-slate-50">
