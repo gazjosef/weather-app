@@ -134,10 +134,12 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-  - [ ] Nested Feature
+- [x] Display temperature, location, and date.
+- [x] Display wind speed, feels like, humidity, and pressure.
+- [x] Display upcoming temperature.
+- [x] Add search fields.
+- [x] Refactor to TypeScript.
+- [ ] Unit & E2E testing.
 
 See the [open issues](https://github.com/gazjosef/weather-app/issues) for a full list of proposed features (and known issues).
 
