@@ -54,7 +54,7 @@ export interface WeatherData {
 const WeatherApp: React.FC = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [upcomingData, setUpcomingData] = useState<WeatherData[] | null>(null);
-  const [city, setCity] = useState<string>("sydney");
+  const [city, setCity] = useState<string>("Sydney");
   const [country, setCountry] = useState<string>("au");
   const API_KEY: string = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
 

@@ -47,31 +47,34 @@ const Current: React.FC<CurrentProps> = ({ weatherData, city, country }) => {
 
   return (
     <div className="current | bg-sky-500 h-[250px] w-full border-solid rounded-[10px] overflow-hidden | text-slate-50">
-      <section className="h-[170px] p-[15px] | grid grid-cols-2 gap-1	">
-        <div>
+      <section className="h-[170px] p-[15px] | grid grid-cols-2  items-center gap-1">
+        <div className="h-[70px] relative">
           <IconContext.Provider
             value={{
-              className: "font-semibold	text-[100px] text-white",
+              className:
+                "absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-semibold	text-[80px] text-white",
             }}
           >
             {iconConverter(weatherData.weather[0].icon)}
           </IconContext.Provider>
-
-          <span className="text-center uppercase">
-            <h2 className="font-semibold	text-[14px] text text-center">
-              {city}, {country}
-            </h2>
-          </span>
         </div>
 
-        <div className="flex flex-col gap-1 items-center justify-center | text-[14px] text-center">
+        <span>
+          <h2 className=" text-[14px] ">
+            {weatherData.weather[0].description}
+          </h2>
+        </span>
+
+        <span className="text-[40px]">
+          {Math.floor(weatherData.main.temp)}
+          <sup className="text-[25px]">&#8451;</sup>
+        </span>
+
+        <div className="font-semibold	text-[14px] text text-center">
+          <h2>
+            {city}, <span className="uppercase">{country}</span>
+          </h2>
           <h2>{currentDate.toLocaleDateString(undefined, options)}</h2>
-
-          <span className="text-[25px]">
-            <h2>{Math.floor(weatherData.main.temp)}&#8451;</h2>
-          </span>
-
-          <h2>{weatherData.weather[0].description}</h2>
         </div>
       </section>
 
