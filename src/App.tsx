@@ -2,11 +2,7 @@ import "./App.css";
 import Iphone from "../components/Layout/Iphone.tsx";
 
 function App() {
-  return (
-    <>
-      <Iphone />
-    </>
-  );
+  return <Iphone />;
 }
 
 export default App;

@@ -1,5 +1,4 @@
 import React from "react";
-// ** Import Shared Components
 import WeatherApp from "../Sections/WeatherApp.tsx";
 
 interface iPhoneProps {}
