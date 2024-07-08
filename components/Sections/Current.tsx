@@ -9,7 +9,7 @@ import {
 import Spinner from "../../src/assets/spinner.svg";
 
 // ** Import Shared Components
-import { WeatherData } from "./WeatherApp";
+import { WeatherData } from "../Layout/WeatherApp.tsx";
 import { iconConverter } from "../Snippets/iconConverter.tsx";
 
 interface CurrentProps {

@@ -1,9 +1,6 @@
-import React from "react";
-import WeatherApp from "../Sections/WeatherApp.tsx";
+import WeatherApp from "./WeatherApp.tsx";
 
-interface iPhoneProps {}
-
-const Iphone: React.FC<iPhoneProps> = () => {
+export default function Iphone() {
   return (
     <div className="center">
       <div className="mobile | bg-white h-[580px] w-[276px] border-solid border-2 border-neutral-400 box-border rounded-[30px] shadow-[inset_0_0_8px_rgba(0,0,0,0.3)] | relative">
@@ -29,6 +26,4 @@ const Iphone: React.FC<iPhoneProps> = () => {
       </div>
     </div>
   );
-};
-
-export default Iphone;
+}
