@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-// ** Import Shared Components
 import Current from "../Sections/Current";
 import Upcoming from "../Sections/Upcoming";
-import SearchBar from "../Snippets/SearchBar";
+import SearchBar from "../Sections/SearchBar";
 
 export interface WeatherData {
   base: string;
