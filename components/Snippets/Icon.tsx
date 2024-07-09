@@ -49,10 +49,15 @@ interface IconProps {
   textSize: number;
 }
 export default function Icon({ icon, textSize }: IconProps) {
+  const iconStyle = {
+    fontSize: `${textSize}px`,
+  };
+
   return (
     <IconContext.Provider
       value={{
-        className: `font-semibold	text-[${textSize}px] text-white`,
+        className: "font-semibold	text-white",
+        style: iconStyle,
       }}
     >
       {iconConverter(icon)}

@@ -100,7 +100,3 @@ export default function Current({ weatherData, city, country }: CurrentProps) {
     </div>
   );
 }
-
-// function WeatherMain() {
-//   return
-// }
