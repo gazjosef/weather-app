@@ -7,7 +7,7 @@ interface FormProps {
   setCountry: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const SearchBar: React.FC<FormProps> = ({ setCity, setCountry }) => {
+export default function SearchBar({ setCity, setCountry }: FormProps) {
   const [inputCity, setInputCity] = useState("");
   const [inputCountry, setInputCountry] = useState("");
 
@@ -36,6 +36,4 @@ const SearchBar: React.FC<FormProps> = ({ setCity, setCountry }) => {
       <SearchButton />
     </form>
   );
-};
-
-export default SearchBar;
+}

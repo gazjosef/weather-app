@@ -1,4 +1,3 @@
-import React from "react";
 import { IconContext } from "react-icons";
 import {
   WiDaySunny,
@@ -47,18 +46,16 @@ const iconConverter = (icon: string): JSX.Element | null => {
 
 interface IconProps {
   icon: string;
+  textSize: number;
 }
-export default function Icon({ icon }: IconProps) {
+export default function Icon({ icon, textSize }: IconProps) {
   return (
-    <div className="h-[70px] relative">
-      <IconContext.Provider
-        value={{
-          className:
-            "absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-semibold	text-[80px] text-white",
-        }}
-      >
-        {iconConverter(icon)}
-      </IconContext.Provider>
-    </div>
+    <IconContext.Provider
+      value={{
+        className: `font-semibold	text-[${textSize}px] text-white`,
+      }}
+    >
+      {iconConverter(icon)}
+    </IconContext.Provider>
   );
 }

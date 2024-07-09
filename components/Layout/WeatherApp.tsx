@@ -50,7 +50,7 @@ export interface WeatherData {
   };
 }
 
-const WeatherApp: React.FC = () => {
+export default function WeatherApp() {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [upcomingData, setUpcomingData] = useState<WeatherData[] | null>(null);
   const [city, setCity] = useState<string>("Sydney");
@@ -92,7 +92,7 @@ const WeatherApp: React.FC = () => {
   }, [API_KEY]);
 
   return (
-    <div className="bg-slate-50 h-full py-[20px] px-[10px] | flex flex-col items-center	justify-between">
+    <div className="bg-slate-50 h-full py-[20px] px-[10px] | flex flex-col items-center justify-between">
       <SearchBar setCity={setCity} setCountry={setCountry} />
 
       <Current weatherData={weatherData} city={city} country={country} />
@@ -100,6 +100,4 @@ const WeatherApp: React.FC = () => {
       <Upcoming upcomingData={upcomingData} />
     </div>
   );
-};
-
-export default WeatherApp;
+}

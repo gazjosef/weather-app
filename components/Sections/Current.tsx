@@ -1,14 +1,24 @@
+import Date from "../Snippets/Date.tsx";
+import Icon from "../Snippets/Icon.tsx";
+import WeatherDetails from "../Snippets/WeatherDetails.tsx";
+import { WeatherData } from "../Layout/WeatherApp.tsx";
+import Spinner from "../../src/assets/spinner.svg";
 import {
   FaWind,
   FaThermometerHalf,
   FaWater,
   FaChartLine,
 } from "react-icons/fa";
-import Spinner from "../../src/assets/spinner.svg";
-import { WeatherData } from "../Layout/WeatherApp.tsx";
-import WeatherDetails from "../Snippets/WeatherDetails.tsx";
-import Icon from "../Snippets/Icon.tsx";
-import Date from "../Snippets/Date.tsx";
+
+const directionConverter = (degrees: number): string => {
+  const directions: string[] = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+
+  let direction = (degrees * 8) / 360;
+  direction = Math.round(direction);
+  direction = (direction + 8) % 8;
+
+  return directions[direction];
+};
 
 interface CurrentProps {
   weatherData: WeatherData | null;
@@ -26,31 +36,12 @@ export default function Current({ weatherData, city, country }: CurrentProps) {
     );
   }
 
-  // console.log(weatherData);
-
-  const directionConverter = (degrees: number): string => {
-    const directions: string[] = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
-
-    let direction = (degrees * 8) / 360;
-    direction = Math.round(direction);
-    direction = (direction + 8) % 8;
-
-    return directions[direction];
-  };
-
   return (
     <div className="current | bg-sky-500 h-[250px] w-full border-solid rounded-[10px] overflow-hidden | text-slate-50">
       <section className="h-[170px] p-[15px] | grid grid-cols-2  items-center gap-1">
-        <Icon icon={weatherData.weather[0].icon} />
-
-        <span className=" text-[14px] ">
-          {weatherData.weather[0].description}
-        </span>
-
-        <span className="text-[40px]">
-          {Math.floor(weatherData.main.temp)}
-          <sup className="text-[25px]">&#8451;</sup>
-        </span>
+        <div className="grid place-content-center">
+          <Icon icon={weatherData.weather[0].icon} textSize={80} />
+        </div>
 
         <div className="font-semibold	text-[14px] text text-center">
           <h2>
@@ -60,6 +51,15 @@ export default function Current({ weatherData, city, country }: CurrentProps) {
             <Date />
           </h2>
         </div>
+
+        <span className="text-[40px]">
+          {Math.floor(weatherData.main.temp)}
+          <sup className="text-[25px]">&#8451;</sup>
+        </span>
+
+        <span className=" text-[14px] ">
+          {weatherData.weather[0].description}
+        </span>
       </section>
 
       <section className="h-[40px] border-t-[1px] border-solid | flex | text-[10px]">
@@ -100,3 +100,7 @@ export default function Current({ weatherData, city, country }: CurrentProps) {
     </div>
   );
 }
+
+// function WeatherMain() {
+//   return
+// }
