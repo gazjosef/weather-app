@@ -1,4 +1,3 @@
-import React from "react";
 import { IconContext } from "react-icons";
 import { FaSearch } from "react-icons/fa";
 
